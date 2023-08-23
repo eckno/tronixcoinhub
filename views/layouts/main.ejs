@@ -1,111 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 
-        <%- meta %>
+<head>
 
-        <!-- Favicon -->
-        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-        <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <meta charset="utf-8" />
+    <title>Base Project | <% if (typeof  page_title ==="string"){ %><%= page_title %><% } %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <%- meta %>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
 
-        <title>Base Project | <% if (typeof  page_title ==="string"){ %><%= page_title %><% } %></title>
+    <!-- Layout config Js -->
+    <script src="/assets/js/layout.js"></script>
+    <!-- Bootstrap Css -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
 
-        <!-- Bootstrap core CSS -->
-        <link href="https://d3eist5doc7549.cloudfront.net/css/bootstrap/5.2.3/bootstrap.min.css" rel="stylesheet">
-        <link href="https://d3eist5doc7549.cloudfront.net/css/bootstrap/5.2.3/bootstrap-grid.min.css" rel="stylesheet">
-        <link href="https://d3eist5doc7549.cloudfront.net/css/bootstrap/5.2.3/bootstrap-reboot.min.css" rel="stylesheet">
-        <link href="https://d3eist5doc7549.cloudfront.net/css/bootstrap-datepicker/1.9.0/boostrap-datepicker.min.css" rel="stylesheet">
-        <!-- Bootstrap core CSS End -->
+    <link rel="stylesheet" href="/css/base.css?v=<%= TEMPLATE_VERSION %>">
+    <link rel="stylesheet" href="/css/style.css?v=<%= TEMPLATE_VERSION %>">
+    <!-- Custom styles for this template End -->
 
-        <!-- jQuerry -->
-        <link rel="stylesheet" href="https://d3eist5doc7549.cloudfront.net/css/jquery-ui/1.13.2/jquery-ui.min.css">
-        <link rel="stylesheet" href="https://d3eist5doc7549.cloudfront.net/css/jquery-ui/1.13.2/jquery-ui.theme.css">
-        <!-- jQuerry End -->
+    <!-- jQuerry -->
+    <link rel="stylesheet" href="https://d3eist5doc7549.cloudfront.net/css/jquery-ui/1.13.2/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://d3eist5doc7549.cloudfront.net/css/jquery-ui/1.13.2/jquery-ui.theme.css">
+    <!-- jQuerry End -->
 
-        <!-- Wait Me Overlay -->
-        <link rel="stylesheet" href="https://d3eist5doc7549.cloudfront.net/css/waitme/1.19/waitMe.min.css">
-        <!-- Wait Me Overlay End -->
+    <!-- Wait Me Overlay -->
+    <link rel="stylesheet" href="https://d3eist5doc7549.cloudfront.net/css/waitme/1.19/waitMe.min.css">
+    <!-- Wait Me Overlay End -->
 
-        <!-- Font Awesome core CSS and JS -->
-        <link rel="stylesheet" href="https://d3eist5doc7549.cloudfront.net/packages/fontawesome/6.3.0/css/all.min.css">
-        <script src="https://d3eist5doc7549.cloudfront.net/packages/fontawesome/6.3.0/js/all.min.js"></script>
-        <!-- Font Awesome core CSS and JS End -->
+    <!-- Other Styles for this templates -->
+    <% if ((typeof header_stylesheets !== 'undefined') && (header_stylesheets.length > 0) && Array.isArray(header_stylesheets)){ %>
+        <% header_stylesheets.forEach(function(style){%>
+            <link rel="stylesheet" href="<%= style %>?v=<%= TEMPLATE_VERSION %>">
+        <% }) %>
+    <% } %>
+    <!-- Other Styles for this templates End -->
 
-        <!-- Swipper CSS -->
-        <link rel="stylesheet" href="https://d3eist5doc7549.cloudfront.net/css/swipper/9.1.0/swiper-bundle.min.css">
-        <!-- Swipper CSS End -->
-
-        <!-- Select2 CSS -->
-        <link rel="stylesheet" href="https://d3eist5doc7549.cloudfront.net/css/select2/4.1.0-rc.0/select2.min.css">
-        <!-- Select2 CSS End -->
-
-        <!-- Slick CSS -->
-        <link rel="stylesheet" href="https://d3eist5doc7549.cloudfront.net/packages/slick/1.8.1/slick.css" />
-        <link rel="stylesheet" href="https://d3eist5doc7549.cloudfront.net/packages/slick/1.8.1/slick-theme.css" />        
-        <!-- Slick CSS End-->
-
-        <!-- Custom styles for this template -->
-        <!-- <link rel="stylesheet" href="/ui-dev-libraries/css/main.css?v=<%= TEMPLATE_VERSION %>"> -->
-        <link rel="stylesheet" href="/css/base.css?v=<%= TEMPLATE_VERSION %>">
-        <link rel="stylesheet" href="/css/style.css?v=<%= TEMPLATE_VERSION %>">
-        <!-- Custom styles for this template End -->
-
-        <!-- Font Styles for the template -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300&display=swap">
-        <link rel="stylesheet" href="https://use.typekit.net/oht2bju.css">
-        <!-- Font Styles for the template End -->
-
-        <!-- Other Styles for this templates -->
-        <% if ((typeof header_stylesheets !== 'undefined') && (header_stylesheets.length > 0) && Array.isArray(header_stylesheets)){ %>
-            <% header_stylesheets.forEach(function(style){%>
-                <link rel="stylesheet" href="<%= style %>?v=<%= TEMPLATE_VERSION %>">
-            <% }) %>
+    <script>
+        var errors = {};
+        <% if (typeof _flash !== 'undefined' && Object.keys(_flash).length > 0) { %>
+            errors = <%- JSON.stringify(_flash) %>;
         <% } %>
-        <!-- Other Styles for this templates End -->
+    </script>
 
-        <script>
-            var errors = {};
-            <% if (typeof _flash !== 'undefined' && Object.keys(_flash).length > 0) { %>
-                errors = <%- JSON.stringify(_flash) %>;
-            <% } %>
-        </script>
-
-        <%- style %>
-    </head>
-
-    <body class="main-layout <% if (typeof selected_page !== 'undefined' && typeof selected_page ==='string' && selected_page.length > 0) { %><%= selected_page %><% } %>">
+    <%- style %>
+</head>
+    <body>
 
         <!-- main page content -->
         <div class="layout-content-wrapper">
             <%- body %>
         </div>
-    
-        <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/jquery/3.6.4/jquery.min.js"></script>
-        <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
-        <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/jquery-ui/1.13.2/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/swipper/9.1.0/swiper-bundle.min.js"></script>
-        <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/select2/4.1.0-rc.0/select2.min.js"></script>
-        <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/popper/2.11.6/popper.min.js"></script>
-        <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/waitme/1.19/waitMe.min.js"></script>
-        <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/underscore/1.13.6/underscore.min.js"></script>
-        <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/bootstrap/5.2.3/bootstrap.min.js"></script>
-        <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/bootstrap-datepicker/1.9.0/bootstrap-datepicker.min.js"></script>
-        <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/bootbox/6.0.0/bootbox.min.js"></script>
-        <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/packages/slick/1.8.1/slick.min.js"></script>
-        <script type="text/javascript" src="/ui-dev-libraries/js/main.js?v=<%= TEMPLATE_VERSION %>"></script>
-        <script src ="/js/common.js?v=<%= TEMPLATE_VERSION %>"></script>
-        <script src ="/js/base.js?v=<%= TEMPLATE_VERSION %>"></script>
 
-        <% if ((typeof footer_scripts !== 'undefined') && (footer_scripts.length > 0) && Array.isArray(footer_scripts)){ %>
-            <% footer_scripts.forEach(function(footer_script){%>
-                <link rel="stylesheet" href="<%= footer_script %>?v=<%= TEMPLATE_VERSION %>">
-                <script src="<%= footer_script %>?v=<%= TEMPLATE_VERSION %>"></script>
-            <% }) %>
-        <% } %>
 
-        <%- script %>
-    </body>
+ <!-- JAVASCRIPT -->
+ <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <script src="/assets/libs/simplebar/simplebar.min.js"></script>
+ <script src="/assets/libs/node-waves/waves.min.js"></script>
+ <script src="/assets/libs/feather-icons/feather.min.js"></script>
+ <script src="/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+ <script src="/assets/js/plugins.js"></script>
+
+ <!-- particles js -->
+ <script src="/assets/libs/particles.js/particles.js"></script>
+ <!-- particles app js -->
+ <script src="/assets/js/pages/particles.app.js"></script>
+ <!-- password-addon init -->
+ <script src="/assets/js/pages/password-addon.init.js"></script>
+
+ <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/waitme/1.19/waitMe.min.js"></script>
+
+ <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/underscore/1.13.6/underscore.min.js"></script>
+
+ <script src ="/js/common.js?v=<%= TEMPLATE_VERSION %>"></script>
+ <script src ="/js/base.js?v=<%= TEMPLATE_VERSION %>"></script>
+ <script src ="/js/main.js?v=<%= TEMPLATE_VERSION %>"></script>
+
+ <% if ((typeof footer_scripts !== 'undefined') && (footer_scripts.length > 0) && Array.isArray(footer_scripts)){ %>
+    <% footer_scripts.forEach(function(footer_script){%>
+        <link rel="stylesheet" href="<%= footer_script %>?v=<%= TEMPLATE_VERSION %>">
+        <script src="<%= footer_script %>?v=<%= TEMPLATE_VERSION %>"></script>
+    <% }) %>
+<% } %>
+
+<%- script %>
+</body>
+
+
 </html>
