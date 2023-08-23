@@ -10,10 +10,11 @@ const flash = require('flash');
 const Logger = require('./lib/logger');
 const expressLayouts = require('express-ejs-layouts');
 
-Logger.init({
-    dsn: process.env.SENTRY_DSN,
-    tracesSampleRate: 1.0
-});
+const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
+var serviceAccount = require("./404/tronixcoin-huber.json");
+
+initializeApp({credential: cert(serviceAccount)});
+Logger.init({dsn: process.env.SENTRY_DSN, tracesSampleRate: 1.0});
 // Config
 const app = express();
 app.use(helmet());

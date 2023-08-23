@@ -1,4 +1,5 @@
 
+const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
 const { ROUTE_LOGOUT } = require('../lib/page-routes');
 const _ = require('lodash');
 const { strtotime, preg_match, filter_var, humanize, empty, isObject, isArray } = require('../lib/utils');
@@ -8,6 +9,7 @@ const { strtotime, preg_match, filter_var, humanize, empty, isObject, isArray } 
  */
 class BaseController {
 	constructor() {
+		this.db = getFirestore();
 		this.logout_url = ROUTE_LOGOUT;
 		this.live_domain = process.env.LIVE_DOMAIN || "";
 		this.footer_script = '';
