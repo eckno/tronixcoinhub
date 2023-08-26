@@ -2,11 +2,15 @@ const app = require('./app');
 
 // Route groups
 const index = require('./routes/index');
-//const registration_patient = require('./routes/registration/patient');
+const auth = require('./routes/auth');
+const dashboard = require('./routes/secure');
+
 
 // Routes
 app.use('/', index);
-//app.use('/', registration_patient);
+app.use('/', auth);
+app.use('/', dashboard);
+
 
 const IndexController = require('./controllers/index');
 
