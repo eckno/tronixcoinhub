@@ -62,6 +62,7 @@
 
 
  <!-- JAVASCRIPT -->
+ <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/jquery/3.6.4/jquery.min.js"></script>
  <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
  <script src="/assets/libs/simplebar/simplebar.min.js"></script>
  <script src="/assets/libs/node-waves/waves.min.js"></script>
@@ -77,8 +78,8 @@
  <script src="/assets/js/pages/password-addon.init.js"></script>
 
  <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/waitme/1.19/waitMe.min.js"></script>
-
  <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/underscore/1.13.6/underscore.min.js"></script>
+ <script type="text/javascript" src="https://d3eist5doc7549.cloudfront.net/js/bootbox/6.0.0/bootbox.min.js"></script>
 
  <script src ="/js/common.js?v=<%= TEMPLATE_VERSION %>"></script>
  <script src ="/js/base.js?v=<%= TEMPLATE_VERSION %>"></script>
@@ -86,7 +87,6 @@
 
  <% if ((typeof footer_scripts !== 'undefined') && (footer_scripts.length > 0) && Array.isArray(footer_scripts)){ %>
     <% footer_scripts.forEach(function(footer_script){%>
-        <link rel="stylesheet" href="<%= footer_script %>?v=<%= TEMPLATE_VERSION %>">
         <script src="<%= footer_script %>?v=<%= TEMPLATE_VERSION %>"></script>
     <% }) %>
 <% } %>

@@ -19,6 +19,7 @@ class BaseController {
 		this.is_live = false;
 		this.is_dev = true;
 		this.is_local = false;
+		this.base_name = "Tronixcoinhub";
 		if (process.env.NODE_ENV && process.env.NODE_ENV === "production") {
 			this.is_dev = false;
 			this.is_local = false;

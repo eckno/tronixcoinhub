@@ -1,9 +1,21 @@
 $(document).ready(function() {
 
+    $("#registration-form").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('registration-form');
+    });
+
     $("#login-form").off("submit").on("submit", function(e) {
         e.preventDefault();
         display_spinner();
         do_form_submit('login-form');
+    });
+
+    $("#forgot-password").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('forgot-password');
     });
    
 
