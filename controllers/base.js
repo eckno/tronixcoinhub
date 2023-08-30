@@ -20,6 +20,11 @@ class BaseController {
 		this.is_dev = true;
 		this.is_local = false;
 		this.base_name = "Tronixcoinhub";
+
+		this.client_name = "";
+		this.username = "";
+		this.balance = "";
+
 		if (process.env.NODE_ENV && process.env.NODE_ENV === "production") {
 			this.is_dev = false;
 			this.is_local = false;
@@ -55,6 +60,16 @@ class BaseController {
 		// add a single js script in /js/libs e.g. index for /js/libs/index.js?v=<%= TEMPLATE_VERSION %>
 		if (this.footer_script !== '') {
 			localData.footer_script = this.footer_script;
+		}
+		// add a reusable variales
+		if (this.client_name !== '') {
+			localData.client_name = this.client_name;
+		}
+		if (this.username !== '') {
+			localData.username = this.username;
+		}
+		if (this.balance !== '') {
+			localData.balance = this.balance;
 		}
 		// add a multiple js scripts with their full url with .js e.g. ["/js/libs/index"] for /js/libs/index.js?v=<%= TEMPLATE_VERSION %>
 		if (this.footer_scripts.length > 0) {

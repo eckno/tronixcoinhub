@@ -139,6 +139,7 @@ class AuthController extends BaseController {
 				total_withdrawn: 0,
 				total_deposited: 0,
 				trading: 0,
+				profile_completion: 20,
 				account_id: generateRandomCodes(1, 25, 25),
 			}
 

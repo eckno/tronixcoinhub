@@ -6,14 +6,21 @@
 const express = require('express');
 const router = express.Router();
 
-const {	ROUTE_DASHBOARD} = require('../../lib/page-routes');
+const {	ROUTE_DASHBOARD, ROUTE_PROFILE} = require('../../lib/page-routes');
 
 const DashboardController = require('../../controllers/secure/index');
 
 
 router.get(ROUTE_DASHBOARD, async (req, res) => {
-	const dashboardController = new DashboardController();
+	const dashboardController = new DashboardController(req);
+	await dashboardController.initialize(req);
 	return dashboardController.indexAction(req, res);
+});
+
+router.get(ROUTE_PROFILE, async (req, res) => {
+	const dashboardController = new DashboardController(req);
+	await dashboardController.initialize(req);
+	return dashboardController.viewProfile(req, res);
 });
 
 // router.get(ROUTE_REGISTER, (req, res) => {

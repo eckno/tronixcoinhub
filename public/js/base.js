@@ -91,3 +91,27 @@ $(document).ready(function () {
   })
     
 });
+
+// Get the current time from the server
+const serverTime = new Date();
+
+// Get the hour from the server time
+const serverHour = serverTime.getHours();
+
+// Define the thresholds for different greetings
+const morningThreshold = 12; // 12:00 PM
+const afternoonThreshold = 17; // 5:00 PM
+
+// Initialize the greeting variable
+let greeting;
+
+// Determine the appropriate greeting based on the server hour
+if (serverHour < morningThreshold) {
+  greeting = 'Good Morning';
+} else if (serverHour < afternoonThreshold) {
+  greeting = 'Good Afternoon';
+} else {
+  greeting = 'Good Evening';
+}
+
+$(".timer_").html(greeting);
