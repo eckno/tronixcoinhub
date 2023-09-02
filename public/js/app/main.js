@@ -17,8 +17,59 @@ $(document).ready(function() {
         display_spinner();
         do_form_submit('forgot-password');
     });
-   
 
+    $("#profile-form").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('profile-form');
+    });
+    $("#change-password-form").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('change-password-form');
+    });
+
+    $("#enabled_two_factor").off("click").on("click", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('enabled_two_factor', "/secure/profile/settings_2fa");
+    });
+    $("#disable_two_factor").off("click").on("click", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('disable_two_factor', "/secure/profile/settings_2fa_disable");
+    });
+    
+    $('#emailNotification').change(function() {
+        if ($(this).is(':checked')) {
+            display_spinner();
+            do_form_submit('notification-form');
+        } else {
+            display_spinner();
+            do_form_submit('notification-form');
+        }
+   
+    });
+    $('#withdrawalNotification').change(function() {
+        if ($(this).is(':checked')) {
+            display_spinner();
+            do_form_submit('notification-form');
+        } else {
+            display_spinner();
+            do_form_submit('notification-form');
+        }
+   
+    });
+    $('#depositNotification').change(function() {
+        if ($(this).is(':checked')) {
+            display_spinner();
+            do_form_submit('notification-form');
+        } else {
+            display_spinner();
+            do_form_submit('notification-form');
+        }
+   
+    });
     // $(".input_code").on("input", function() {
     //     var maxLength = parseInt($(this).attr("maxlength"));
     //     var inputValue = $(this).val();

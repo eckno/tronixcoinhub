@@ -29,13 +29,10 @@
                             <div class="flex-grow-1">
                                 <h5 class="card-title mb-0">Complete Your Profile</h5>
                             </div>
-                            <div class="flex-shrink-0">
-                                <a href="javascript:void(0);" class="badge bg-light text-primary fs-12"><i class="ri-edit-box-line align-bottom me-1"></i> Edit</a>
-                            </div>
                         </div>
                         <div class="progress animated-progress custom-progress progress-label">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                                <div class="label">30%</div>
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: <%= typeof user_details.profile_completion !== 'undefined' ? user_details.profile_completion : 20 %>%" aria-valuenow="<%= typeof user_details.profile_completion !== 'undefined' ? user_details.profile_completion : 20 %>" aria-valuemin="0" aria-valuemax="100">
+                                <div class="label"><%= typeof user_details.profile_completion !== 'undefined' ? user_details.profile_completion : 20 %>%</div>
                             </div>
                         </div>
                     </div>
@@ -68,40 +65,33 @@
                     <div class="card-body p-4">
                         <div class="tab-content">
                             <div class="tab-pane active" id="personalDetails" role="tabpanel">
-                                <form action="javascript:void(0);">
+                                <form id="profile-form" action="/secure/profile">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="firstnameInput" class="form-label">First Name</label>
-                                                <input type="text" class="form-control" id="firstnameInput" placeholder="Enter your firstname" value="Dave">
+                                                <input type="text" class="form-control" id="firstnameInput" placeholder="Enter your firstname" value="<%= user_details.firstname %>" readonly>
                                             </div>
                                         </div>
                                         <!--end col-->
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="lastnameInput" class="form-label">Last Name</label>
-                                                <input type="text" class="form-control" id="lastnameInput" placeholder="Enter your lastname" value="Adame">
+                                                <input type="text" class="form-control" id="lastnameInput" placeholder="Enter your lastname" value="<%= user_details.lastname %>" readonly>
                                             </div>
                                         </div>
                                         <!--end col-->
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="phonenumberInput" class="form-label">Phone Number</label>
-                                                <input type="text" class="form-control" id="phonenumberInput" placeholder="Enter your phone number" value="+(1) 987 6543">
+                                                <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter your phone number" value="<%= typeof user_details.phone !== 'undefined' ? user_details.phone : '' %>">
                                             </div>
                                         </div>
                                         <!--end col-->
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="emailInput" class="form-label">Email Address</label>
-                                                <input type="email" class="form-control" id="emailInput" placeholder="Enter your email" value="daveadame@velzon.com">
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-                                        <div class="col-lg-12">
-                                            <div class="mb-3">
-                                                <label for="JoiningdatInput" class="form-label">Joining Date</label>
-                                                <input type="text" class="form-control" data-provider="flatpickr" id="JoiningdatInput" data-date-format="d M, Y" data-deafult-date="24 Nov, 2021" placeholder="Select date" />
+                                                <input type="email" class="form-control" id="emailInput" placeholder="Enter your email" value="<%= typeof user_details.email !== 'undefined' ? user_details.email : '' %>" readonly>
                                             </div>
                                         </div>
                                        
@@ -109,21 +99,21 @@
                                         <div class="col-lg-4">
                                             <div class="mb-3">
                                                 <label for="cityInput" class="form-label">City</label>
-                                                <input type="text" class="form-control" id="cityInput" placeholder="City" value="California" />
+                                                <input type="text" class="form-control" name="city" id="city" placeholder="City" value="<%= typeof user_details.city !== 'undefined' ? user_details.city : '' %>" />
                                             </div>
                                         </div>
                                         <!--end col-->
                                         <div class="col-lg-4">
                                             <div class="mb-3">
                                                 <label for="countryInput" class="form-label">Country</label>
-                                                <input type="text" class="form-control" id="countryInput" placeholder="Country" value="United States" />
+                                                <input type="text" class="form-control" name="country" id="country" placeholder="Country" value="<%= typeof user_details.country !== 'undefined' ? user_details.country : '' %>" />
                                             </div>
                                         </div>
                                         <!--end col-->
                                         <div class="col-lg-4">
                                             <div class="mb-3">
                                                 <label for="zipcodeInput" class="form-label">Zip Code</label>
-                                                <input type="text" class="form-control" minlength="5" maxlength="6" id="zipcodeInput" placeholder="Enter zipcode" value="90011">
+                                                <input type="text" class="form-control" minlength="5" maxlength="6" name="zipcode" id="zipcode" placeholder="Enter zipcode" value="<%= typeof user_details.zipcode !== 'undefined' ? user_details.zipcode : '' %>">
                                             </div>
                                         </div>
                                         
@@ -140,34 +130,29 @@
                             </div>
                             <!--end tab-pane-->
                             <div class="tab-pane" id="changePassword" role="tabpanel">
-                                <form action="javascript:void(0);">
+                                <form id="change-password-form" action="/secure/profile/password">
                                     <div class="row g-2">
                                         <div class="col-lg-4">
                                             <div>
                                                 <label for="oldpasswordInput" class="form-label">Old Password*</label>
-                                                <input type="password" class="form-control" id="oldpasswordInput" placeholder="Enter current password">
+                                                <input type="password" class="form-control" name="oldpassword" id="oldpassword" placeholder="Enter current password">
                                             </div>
                                         </div>
                                         <!--end col-->
                                         <div class="col-lg-4">
                                             <div>
                                                 <label for="newpasswordInput" class="form-label">New Password*</label>
-                                                <input type="password" class="form-control" id="newpasswordInput" placeholder="Enter new password">
+                                                <input type="password" class="form-control" name="newpassword" id="newpassword" placeholder="Enter new password">
                                             </div>
                                         </div>
                                         <!--end col-->
                                         <div class="col-lg-4">
                                             <div>
                                                 <label for="confirmpasswordInput" class="form-label">Confirm Password*</label>
-                                                <input type="password" class="form-control" id="confirmpasswordInput" placeholder="Confirm password">
+                                                <input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="Confirm password">
                                             </div>
                                         </div>
-                                        <!--end col-->
-                                        <div class="col-lg-12">
-                                            <div class="mb-3">
-                                                <a href="javascript:void(0);" class="link-primary text-decoration-underline">Forgot Password ?</a>
-                                            </div>
-                                        </div>
+                                        
                                         <!--end col-->
                                         <div class="col-lg-12">
                                             <div class="text-end">
@@ -191,7 +176,11 @@
                                             <p class="text-muted">Two-factor authentication is an enhanced security meansur. Once enabled, you'll be required to give two types of identification when you log into your account.</p>
                                         </div>
                                         <div class="flex-shrink-0 ms-sm-3">
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-primary">Enable Two-facor Authentication</a>
+                                            <% if(typeof user_details.settings !== 'undefined' && typeof user_details.settings.using_2fa !== 'undefined' &&  user_details.settings.using_2fa === 'Yes'){ %>
+                                                <a id="disable_two_factor" action="/secure/profile/settings_2fa_disable" href="javascript:void(0);" class="btn btn-sm btn-danger">Disable Two-factor Authentication</a>
+                                            <% } else { %>
+                                                <a id="enabled_two_factor" action="/secure/profile/settings_2fa" href="javascript:void(0);" class="btn btn-sm btn-primary">Enable Two-factor Authentication</a>
+                                            <% } %>
                                         </div>
                                     </div>
                                     
@@ -207,6 +196,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <h5 class="card-title text-decoration-underline mb-3">Application Notifications:</h5>
+                                <form action="/secure/profile/settings_notification" id="notification-form">
                                     <ul class="list-unstyled mb-0">
                                        
                                         <li class="d-flex mt-2">
@@ -217,7 +207,7 @@
                                             </div>
                                             <div class="flex-shrink-0">
                                                 <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" role="switch" id="emailNotification" />
+                                                    <input class="form-check-input" <%- (typeof user_details.settings !== 'undefined' && typeof user_details.settings.email_notification !== 'undefined' &&  user_details.settings.email_notification === 'Yes') ? 'checked' : '' %> name="emailNotification" type="checkbox" role="switch" id="emailNotification" />
                                                 </div>
                                             </div>
                                         </li>
@@ -229,7 +219,7 @@
                                             </div>
                                             <div class="flex-shrink-0">
                                                 <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" role="switch" id="chatNotification" />
+                                                    <input class="form-check-input" <%- (typeof user_details.settings !== 'undefined' && typeof user_details.settings.withdrawal_email !== 'undefined' &&  user_details.settings.withdrawal_email === 'Yes') ? 'checked' : '' %> name="withdrawalNotification" type="checkbox" role="switch" id="withdrawalNotification" />
                                                 </div>
                                             </div>
                                         </li>
@@ -241,11 +231,12 @@
                                             </div>
                                             <div class="flex-shrink-0">
                                                 <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" role="switch" id="purchaesNotification" />
+                                                    <input class="form-check-input" <%- (typeof user_details.settings !== 'undefined' && typeof user_details.settings.deposit_email !== 'undefined' &&  user_details.settings.deposit_email === 'Yes') ? 'checked' : '' %> name="depositNotification" type="checkbox" role="switch" id="depositNotification" />
                                                 </div>
                                             </div>
                                         </li>
                                     </ul>
+                                </form>
                                 </div>
                                 <div>
                                     <h5 class="card-title text-decoration-underline mb-3">Delete This Account:</h5>
@@ -253,8 +244,7 @@
                                         <input type="password" class="form-control" id="passwordInput" placeholder="Enter your password" value="make@321654987" style="max-width: 265px;">
                                     </div>
                                     <div class="hstack gap-2 mt-3">
-                                        <a href="javascript:void(0);" class="btn btn-soft-danger">Close & Delete This Account</a>
-                                        <a href="javascript:void(0);" class="btn btn-light">Cancel</a>
+                                        <a onclick="return alert('Kindly reach out to the admin or your account manager.')" href="javascript:void(0);" class="btn btn-soft-danger">Close & Delete This Account</a>
                                     </div>
                                 </div>
                             </div>

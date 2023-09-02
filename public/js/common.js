@@ -69,6 +69,10 @@ function do_form_submit(target_form_id, action, callback_function) {
                 } else if (!_.isUndefined(response.data) && !_.isEmpty(response.data) && !_.isUndefined(response.data.redirect_url) && !_.isEmpty(response.data.redirect_url)) {
                     redirect = response.data.redirect_url;
                 }
+
+                if (!_.isUndefined(response.show_inactive_modal) && !_.isEmpty(response.show_inactive_modal)){
+                    $("#request-code-sent").modal("show");
+                }
             }
 
             if (!_.isUndefined(callback_function) && !_.isEmpty(callback_function) && typeof window[callback_function] === "function") {
