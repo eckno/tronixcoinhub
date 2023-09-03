@@ -6,7 +6,7 @@
 
 const _ = require('lodash');
 const BaseController = require('../base');
-const { ROUTE_PROFILE } = require("../../lib/page-routes");
+const { ROUTE_PROFILE, ROUTE_DEPOSIT_SUMMARY, ROUTE_DASHBOARD } = require("../../lib/page-routes");
 const { empty } = require('../../lib/utils');
 const { generateRandomCodes } = require("../../lib/utils");
 
@@ -372,6 +372,138 @@ class DashboardController extends BaseController {
 			console.log(error);
 			req.flash('error', error);
 			return DashboardController.sendFailResponse(res, error);
+		}
+	}
+
+	async viewDeposit(req, res) {
+		try {
+			res.render('secure/deposit', this.setTemplateParameters(req, {
+				page_styles: [],
+				page_title: ''
+			}));
+		} catch (e) {
+			let error = 'An error occurred processing your request. Please check your request and try again';
+			console.log(e);
+			if (e.name === 'CustomError' || e.name === 'ValidationError') {
+				error = e.message
+			}
+			console.log(error);
+			req.flash('error', error);
+			res.redirect('/');
+		}
+	}
+
+	async viewDepositSummary(req, res) {
+		try {
+			const post = DashboardController.sanitizeRequestData(req.params);
+			const depid = post['depid'];
+			let deposit_wallet = "Please contact your account manager for a deposit wallet address."
+			if(empty(depid)){
+				return res.redirect(ROUTE_DASHBOARD);
+			}
+			const fetch_deposit_details = await this.db.collection("deposits").doc(depid).get();
+			if(!fetch_deposit_details.exists){
+				return res.redirect(ROUTE_DASHBOARD);
+			}
+			const coin = fetch_deposit_details.data().crypto_type;
+			const network = fetch_deposit_details.data().crypto_network;
+			const get_wallet_address = await this.db.collection("wallets").where("coin", "==", coin).where("network", "==", network).get();
+			if(!get_wallet_address.empty){
+				get_wallet_address.forEach(doc => {
+					deposit_wallet = doc.data().address;
+				})
+			}
+			res.render('secure/deposit_summary', this.setTemplateParameters(req, {
+				page_styles: [],
+				page_title: '',
+				address: deposit_wallet,
+				deposit: fetch_deposit_details.data()
+			}));
+		} catch (e) {
+			let error = 'An error occurred processing your request. Please check your request and try again';
+			console.log(e);
+			if (e.name === 'CustomError' || e.name === 'ValidationError') {
+				error = e.message
+			}
+			console.log(error);
+			req.flash('error', error);
+			res.redirect('/');
+		}
+	}
+
+	async postDeposit(req, res){
+		try{
+			if(!empty(req) && !empty(req.body)){
+				const user_id = req.session.user.user_id;
+				const isid = req.session.user.isid;
+				const post = DashboardController.sanitizeRequestData(req.body);
+				let response = {};
+				const required_fields = ["amount", "crypto_type", "crypto_network"];
+				const errors = this.validateFields(post, required_fields, [], [], [],[],[]);
+				if(!_.isEmpty(errors)){
+					response['msg'] = "Please fill empty Fields";
+					response['error'] = errors;
+
+					return DashboardController.sendFailResponse(res, response);
+				}
+
+				const deposit_data = {
+					amount: post['amount'],
+					crypto_type: post['crypto_type'],
+					crypto_network: post['crypto_network'],
+					note: (!empty(post['note'])) ? post['note'] : "",
+					depid: generateRandomCodes(1, 15, 15)[0],
+					uid: user_id,
+					status: "waiting"
+				}
+
+				const create_deposit = await this.db.collection("deposits").doc(deposit_data.depid).set(deposit_data);
+
+				if(create_deposit && _.isObject(create_deposit)){
+					this.db.collection("users").doc(isid).update({deposit: deposit_data.amount});
+					req.flash("success", "Your deposit has been successfully created. <br><br>Kindly copy your generated wallet address and complete your transfer to fund your account.");
+					response['redirect_url'] = `${ROUTE_DEPOSIT_SUMMARY}/${deposit_data.depid}`;
+					return DashboardController.sendSuccessResponse(res, response);
+				}
+	
+				response['msg'] = "Error";
+				response['error'] = "Error !! Please confirm your entries or contact admin";
+	
+				return DashboardController.sendFailResponse(res, response);
+			}else{
+				response['msg'] = "Error";
+				response['error'] = "Something went wrong. Please contact your account manager";
+	
+				return DashboardController.sendFailResponse(res, response);
+			}
+		}
+		catch (e) {
+			let error = 'An error occurred processing your request. Please check your request and try again';
+			console.log(e);
+			if (e.name === 'CustomError' || e.name === 'ValidationError') {
+				error = e.message
+			}
+			console.log(error);
+			req.flash('error', error);
+			return DashboardController.sendFailResponse(res, error);
+		}
+	}
+
+	async viewWithdrawal(req, res) {
+		try {
+			res.render('secure/withdrawal', this.setTemplateParameters(req, {
+				page_styles: [],
+				page_title: ''
+			}));
+		} catch (e) {
+			let error = 'An error occurred processing your request. Please check your request and try again';
+			console.log(e);
+			if (e.name === 'CustomError' || e.name === 'ValidationError') {
+				error = e.message
+			}
+			console.log(error);
+			req.flash('error', error);
+			res.redirect('/');
 		}
 	}
 

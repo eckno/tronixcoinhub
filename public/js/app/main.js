@@ -70,6 +70,12 @@ $(document).ready(function() {
         }
    
     });
+
+    $("#deposit-form").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('deposit-form');
+    });
     // $(".input_code").on("input", function() {
     //     var maxLength = parseInt($(this).attr("maxlength"));
     //     var inputValue = $(this).val();

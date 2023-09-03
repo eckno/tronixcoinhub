@@ -115,3 +115,26 @@ if (serverHour < morningThreshold) {
 }
 
 $(".timer_").html(greeting);
+
+function copyText() {
+  // Select the input field
+  const inputField = document.getElementById('wllet');
+  
+  // Select the text in the input field
+  inputField.select();
+  
+  // Copy the selected text to the clipboard
+  document.execCommand('copy');
+  
+  // Deselect the input field
+  inputField.setSelectionRange(0, 0);
+  
+  // Provide some visual feedback (optional)
+  alert('Wallet has been copied to the clipboard');
+}
+
+// Attach the copyText function to the button's click event
+const copyButton = document.getElementById('copywllet');
+if(typeof copyButton !== 'undefined'){
+  copyButton.addEventListener('click', copyText);
+}

@@ -140,7 +140,7 @@ class AuthController extends BaseController {
 				total_deposited: 0,
 				trading: 0,
 				profile_completion: 20,
-				account_id: generateRandomCodes(1, 25, 25),
+				account_id: generateRandomCodes(1, 25, 25)[0],
 			}
 
 			const create_new_user = await this.db.collection("users").doc(new_user_data['email']).set(new_user_data);

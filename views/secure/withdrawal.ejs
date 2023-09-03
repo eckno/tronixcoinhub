@@ -1,0 +1,100 @@
+<%- include('../partials/header'); %>
+<%- include('../partials/top-header'); %>
+<%- include('../partials/sidebar'); %>
+
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0">Account Withdrawal</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Account</a></li>
+                            <li class="breadcrumb-item active">withdraw</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Withdrawal Form</h4>
+                    </div><!-- end card header -->
+                    <div class="card-body">
+                        <div class="live-preview">
+                            <form id="deposit-form" action="/secure/withdraw">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="amount" class="form-label">Withdrawal Amount ($)</label>
+                                            <input type="number" class="form-control" name="amount" id="amount" placeholder="Enter amount">
+                                        </div>
+                                    </div>
+                                    <!--end col-->
+                                    <div class="col-lg-6">
+                                        <label for="crypto_type" class="form-label">Crypto Type</label>
+                                        <select name="crypto_type" id="crypto_type" class="form-select mb-3">
+                                            <option value="">Select your crypto </option>
+                                            <option value="BTC">Bitcoin</option>
+                                            <option value="ETH">ETH</option>
+                                            <option value="USDT">USDT</option>
+                                        </select>
+                                    </div>
+                                    <!--end col-->
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="crypto_network" class="form-label">Crypto Network</label>
+                                            <select name="crypto_network" id="crypto_network" class="form-select mb-3">
+                                                <option value="">Select your Network </option>
+                                                <option value="BEP20">BEP20</option>
+                                                <option value="ERC20">ERC20</option>
+                                                <option value="TRC20">TRC20</option>
+                                                <option value="BTC">Bitcoin</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--end col-->
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <div>
+                                                <label for="note" class="form-label">Deposit Address</label>
+                                                <textarea class="form-control" name="note" id="note" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                   
+                                    <!--end col-->
+                                    <div class="col-lg-12">
+                                        <div class="hstack gap-2 justify-content-end">
+                                            <button type="submit" class="btn btn-primary">Create deposit</button>
+                                        </div>
+                                    </div>
+                                    <!--end col-->
+                                </div>
+                                <!--end row-->
+                            </form>
+                            <!--end row-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+
+    </div>
+    <!-- container-fluid -->
+</div><!-- End Page-content -->
+
+<%- include('../partials/footer'); %>
