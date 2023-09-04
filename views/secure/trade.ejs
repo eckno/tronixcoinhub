@@ -1,0 +1,310 @@
+<%- include('../partials/header'); %>
+<%- include('../partials/top-header'); %>
+<%- include('../partials/sidebar'); %>
+
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-4">
+                <div class="text-center mb-4 pb-2">
+                    <h4 class="fw-semibold fs-22">Tronix Investments</h4>
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card pricing-box text-center">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body h-100">
+                                <form id="tronic-basic-form" action="/secure/trade">
+                                <input type="hidden" name="plan" value="basic">
+                                <div>
+                                    <h5 class="mb-1">Tronix Basic</h5>
+                                    <p class="text-muted">Halal Investing</p>
+                                </div>
+
+                                <div class="py-4">
+                                    <h2><sup><small>$</small></sup>100 <span class="fs-13 text-muted"> /min</span></h2>
+                                </div>
+
+                                <div class="text-center plan-btn mt-2">
+                                    <button class="btn btn-success w-sm waves-effect waves-light">Start Trade</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-6">
+                            <div class="card-body border-start mt-4 mt-lg-0">
+                                <div class="card-header bg-light">
+                                    <h5 class="fs-15 mb-0">Plan Features:</h5>
+                                </div>
+                                <div class="card-body pb-0">
+                                    <ul class="list-unstyled vstack gap-3 mb-0">
+                                        <li>Commission Free </li>
+                                        <li>0.0100 Minimum price fluctuation </li>
+                                        <li>Spreads as low as 3%</li>
+                                        <li>Margin Percent 1.5%</li>
+                                        <li>Low swap value (margin currency) -0.23</li>
+                                        <li>Limit and Stop levels (15)</li>
+                                        <li>Trade Duration 10 Days</li>
+                                        <li>Profit 2%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+            </div>
+            <!--end row-->
+
+
+            <div class="col-lg-6">
+                <div class="card pricing-box text-center">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body h-100">
+                                <form id="tronic-espp-form" action="/secure/trade">
+                                    <input type="hidden" name="plan" value="espp">
+                                <div>
+                                    <h5 class="mb-1">Tronix ESPP</h5>
+                                </div>
+                                <div class="py-4">
+                                    <h2><sup><small>$</small></sup>18,000 <span class="fs-13 text-muted">/Min</span></h2>
+                                </div>
+
+                                <div class="text-center plan-btn mt-2">
+                                    <button  class="btn btn-success w-sm waves-effect waves-light">Start Trade</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-6">
+                            <div class="card-body border-start mt-4 mt-lg-0">
+                                <div class="card-header bg-light">
+                                    <h5 class="fs-15 mb-0">Plan Features:</h5>
+                                </div>
+                                <div class="card-body pb-0">
+                                    <ul class="list-unstyled vstack gap-3 mb-0">
+                                        <li>Commission Free</li>
+                                        <li>0.0100 Minimum price fluctuation</li>
+                                        <li>Spreads as low as 3% </li>
+                                        <li>Margin Percent 1.5%</li>
+                                        <li>Low swap value (margin currency) -0.23</li>
+                                        <li>Limit and Stop levels (15)</li>
+                                        <li>Trade Duration 22 Days</li>
+                                        <li>Profit 3.2%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+            </div>
+            <!--end col-->
+
+            <div class="col-lg-6">
+                <div class="card pricing-box ribbon-box ribbon-fill text-center">
+                    <div class="ribbon ribbon-primary">New</div>
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body h-100">
+                                <form id="tronic-black-form" action="/secure/trade">
+                                    <input type="hidden" name="plan" value="black">
+                                <div>
+                                    <h5 class="mb-1">Tronix Black</h5>
+                                    <p class="text-muted">Halal Investing</p>
+                                </div>
+
+                                <div class="py-4">
+                                    <h2><sup><small>$</small></sup>1500 <span class="fs-13 text-muted">/Min</span></h2>
+                                </div>
+
+                                <div class="text-center plan-btn mt-2">
+                                    <button  class="btn btn-success w-sm waves-effect waves-light">Start Trade</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-6">
+                            <div class="card-body border-start mt-4 mt-lg-0">
+                                <div class="card-header bg-light">
+                                    <h5 class="fs-15 mb-0">Plan Features:</h5>
+                                </div>
+                                <div class="card-body pb-0">
+                                    <ul class="list-unstyled vstack gap-3 mb-0">
+                                        <li>Spreads as low as 0.339 </li>
+                                        <li>Min/Max Trade Size 2/444</li>
+                                        <li>Margin Percentage 10%</li>
+                                        <li>Minimum Price Fluctuation 0.0010</li>
+                                        <li>Limit and Stop levels (25)</li>
+                                        <li>Trade Duration 10 Days</li>
+                                        <li>Profit 2.5%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+            </div>
+            <!--end row-->
+            <div class="col-lg-6">
+                <div class="card pricing-box ribbon-box ribbon-fill text-center">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body h-100">
+                                <form id="tronic-pro-form" action="/secure/trade">
+                                    <input type="hidden" name="plan" value="pro">
+                                <div>
+                                    <h5 class="mb-1">Tronix Pro</h5>
+                                </div>
+
+                                <div class="py-4">
+                                    <h2><sup><small>$</small></sup>5000 <span class="fs-13 text-muted">/Min</span></h2>
+                                </div>
+
+                                <div class="text-center plan-btn mt-2">
+                                    <button  class="btn btn-success w-sm waves-effect waves-light">Start Trade</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-6">
+                            <div class="card-body border-start mt-4 mt-lg-0">
+                                <div class="card-header bg-light">
+                                    <h5 class="fs-15 mb-0">Plan Features:</h5>
+                                </div>
+                                <div class="card-body pb-0">
+                                    <ul class="list-unstyled vstack gap-3 mb-0">
+                                        <li>Minimum Price Fluctuation 0.01000</li>
+                                        <li>Min/Max Trade Size 1/388</li>
+                                        <li>ISIN DE000A1EWWW0</li>
+                                        <li>Commission Per Transaction 0.1%</li>
+                                        <li>Trade Duration 10 Days</li>
+                                        <li>Profit 2.8%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+            </div>
+            <!--end col-->
+
+            <div class="col-lg-6">
+                <div class="card pricing-box ribbon-box ribbon-fill text-center">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body h-100">
+                                <form id="tronic-aglenergy-form" action="/secure/trade">
+                                    <input type="hidden" name="plan" value="aglenergy">
+                                <div>
+                                    <h5 class="mb-1">Tronix AGL Energy</h5>
+                                </div>
+
+                                <div class="py-4">
+                                    <h2><sup><small>$</small></sup>45000 <span class="fs-13 text-muted">/Min</span></h2>
+                                </div>
+
+                                <div class="text-center plan-btn mt-2">
+                                    <button  class="btn btn-success w-sm waves-effect waves-light">Start Trade</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-6">
+                            <div class="card-body border-start mt-4 mt-lg-0">
+                                <div class="card-header bg-light">
+                                    <h5 class="fs-15 mb-0">Plan Features:</h5>
+                                </div>
+                                <div class="card-body pb-0">
+                                    <ul class="list-unstyled vstack gap-3 mb-0">
+                                        <li>Spreads as low as 0.339</li>
+                                        <li>Min/Max Trade Size 2/444</li>
+                                        <li>Margin Percentage 10%</li>
+                                        <li>Minimum Price Fluctuation 0.0010</li>
+                                        <li>Limit and Stop levels (25)</li>
+                                        <li>Trade Duration 40 Days</li>
+                                        <li>Profit 3.5%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+            </div>
+            <!--end col-->
+
+            <div class="col-lg-6">
+                <div class="card pricing-box ribbon-box ribbon-fill text-center">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body h-100">
+                                <form id="tronic-bonds-form" action="/secure/trade">
+                                    <input type="hidden" name="plan" value="bonds">
+                                <div>
+                                    <h5 class="mb-1">Tronix Bonds</h5>
+                                </div>
+
+                                <div class="py-4">
+                                    <h2><sup><small>$</small></sup>72000 <span class="fs-13 text-muted">/Min</span></h2>
+                                </div>
+
+                                <div class="text-center plan-btn mt-2">
+                                    <button  class="btn btn-success w-sm waves-effect waves-light">Start Trade</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-6">
+                            <div class="card-body border-start mt-4 mt-lg-0">
+                                <div class="card-header bg-light">
+                                    <h5 class="fs-15 mb-0">Plan Features:</h5>
+                                </div>
+                                <div class="card-body pb-0">
+                                    <ul class="list-unstyled vstack gap-3 mb-0">
+                                        <li>Minimum Price Fluctuation 0.01000 </li>
+                                        <li>Min/Max Trade Size 1/388</li>
+                                        <li>ISIN DE000A1EWWW0</li>
+                                        <li>Commission Per Transaction 0.4%</li>
+                                        <li>Trade Duration 72 Days</li>
+                                        <li>Profit 3.8%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+
+    </div>
+    <!-- container-fluid -->
+</div><!-- End Page-content -->
+
+<%- include('../partials/footer'); %>

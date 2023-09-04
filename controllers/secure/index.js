@@ -6,7 +6,7 @@
 
 const _ = require('lodash');
 const BaseController = require('../base');
-const { ROUTE_PROFILE, ROUTE_DEPOSIT_SUMMARY, ROUTE_DASHBOARD } = require("../../lib/page-routes");
+const { ROUTE_PROFILE, ROUTE_DEPOSIT_SUMMARY, ROUTE_DASHBOARD, ROUTE_WITHDRAWAL_SUMMARY } = require("../../lib/page-routes");
 const { empty } = require('../../lib/utils');
 const { generateRandomCodes } = require("../../lib/utils");
 
@@ -446,6 +446,12 @@ class DashboardController extends BaseController {
 
 					return DashboardController.sendFailResponse(res, response);
 				}
+				if(post['amount'] < 50){
+					response['msg'] = "incorrect amount";
+					response['error'] = "You can not make a deposit less than $50 !";
+
+					return DashboardController.sendFailResponse(res, response);
+				}
 
 				const deposit_data = {
 					amount: post['amount'],
@@ -461,6 +467,7 @@ class DashboardController extends BaseController {
 
 				if(create_deposit && _.isObject(create_deposit)){
 					this.db.collection("users").doc(isid).update({deposit: deposit_data.amount});
+					this.db.collection('transactions').doc().set(deposit_data);
 					req.flash("success", "Your deposit has been successfully created. <br><br>Kindly copy your generated wallet address and complete your transfer to fund your account.");
 					response['redirect_url'] = `${ROUTE_DEPOSIT_SUMMARY}/${deposit_data.depid}`;
 					return DashboardController.sendSuccessResponse(res, response);
@@ -504,6 +511,212 @@ class DashboardController extends BaseController {
 			console.log(error);
 			req.flash('error', error);
 			res.redirect('/');
+		}
+	}
+
+	async postWithdrawal(req, res) {
+		try{
+			if(!empty(req) && !empty(req.body)){
+				const user_id = req.session.user.user_id;
+				const isid = req.session.user.isid;
+				const post = DashboardController.sanitizeRequestData(req.body);
+				let response = {};
+				const required_fields = ["amount", "crypto_type", "crypto_network", "wallet_address"];
+				const errors = this.validateFields(post, required_fields, [], [], [],[],[]);
+				if(!_.isEmpty(errors)){
+					response['msg'] = "Please fill empty Fields";
+					response['error'] = errors;
+
+					return DashboardController.sendFailResponse(res, response);
+				}
+
+				if(post['amount'] < 5){
+					response['msg'] = "incorrect amount";
+					response['error'] = "You can not make a deposit less than $50 !";
+
+					return DashboardController.sendFailResponse(res, response);
+				}
+
+				const _data = {
+					amount: post['amount'],
+					crypto_type: post['crypto_type'],
+					crypto_network: post['crypto_network'],
+					wallet_address: (!empty(post['wallet_address'])) ? post['wallet_address'] : "",
+					wid: generateRandomCodes(1, 15, 15)[0],
+					uid: user_id,
+					status: "processing"
+				}
+
+				const submit_withdrawal = await this.db.collection("withdrawals").doc(_data.wid).set(_data);
+
+				if(submit_withdrawal && _.isObject(submit_withdrawal)){
+					this.db.collection("users").doc(isid).update({withdrawal: _data.amount});
+					this.db.collection('transactions').doc().set(_data);
+					req.flash("success", "Your withdrawal request has been submitted successfully and will be attended to in the few minutes.");
+					response['redirect_url'] = `${ROUTE_WITHDRAWAL_SUMMARY}/${_data.wid}`;
+					return DashboardController.sendSuccessResponse(res, response);
+				}
+	
+				response['msg'] = "Error";
+				response['error'] = "Error !! Please confirm your entries or contact admin";
+	
+				return DashboardController.sendFailResponse(res, response);
+			}else{
+				response['msg'] = "Error";
+				response['error'] = "Something went wrong. Please contact your account manager";
+	
+				return DashboardController.sendFailResponse(res, response);
+			}
+		}
+		catch (e) {
+			let error = 'An error occurred processing your request. Please check your request and try again';
+			console.log(e);
+			if (e.name === 'CustomError' || e.name === 'ValidationError') {
+				error = e.message
+			}
+			console.log(error);
+			req.flash('error', error);
+			return DashboardController.sendFailResponse(res, error);
+		}
+	}
+
+	async viewWithdrawalSummary(req, res) {
+		try {
+			const post = DashboardController.sanitizeRequestData(req.params);
+			const wid = post['wid'];
+			if(empty(wid)){
+				return res.redirect(ROUTE_DASHBOARD);
+			}
+			const fetch_wid_details = await this.db.collection("withdrawals").doc(wid).get();
+			if(!fetch_wid_details.exists){
+				return res.redirect(ROUTE_DASHBOARD);
+			}
+			
+			res.render('secure/withdrawal_summary', this.setTemplateParameters(req, {
+				page_styles: [],
+				page_title: '',
+				withd: fetch_wid_details.data()
+			}));
+		} catch (e) {
+			let error = 'An error occurred processing your request. Please check your request and try again';
+			console.log(e);
+			if (e.name === 'CustomError' || e.name === 'ValidationError') {
+				error = e.message
+			}
+			console.log(error);
+			req.flash('error', error);
+			res.redirect('/');
+		}
+	}
+
+	async viewTrade(req, res) {
+		try {			
+			res.render('secure/trade', this.setTemplateParameters(req, {
+				page_styles: [],
+				page_title: ''
+			}));
+		} catch (e) {
+			let error = 'An error occurred processing your request. Please check your request and try again';
+			console.log(e);
+			if (e.name === 'CustomError' || e.name === 'ValidationError') {
+				error = e.message
+			}
+			console.log(error);
+			req.flash('error', error);
+			res.redirect('/');
+		}
+	}
+
+	async postTrade(req, res) {
+		try{
+			if(!empty(req) && !empty(req.body)){
+				const user_id = req.session.user.user_id;
+				const isid = req.session.user.isid;
+				const post = DashboardController.sanitizeRequestData(req.body);
+				let response = {}, minimum = "";
+				const plan = post['plan'];
+
+				switch(plan) {
+					case "basic":
+						minimum = 100;
+					break;
+					case "espp":
+						minimum = 18000;
+					break;
+					case "black":
+						minimum = 1500;
+					break;
+					case "pro":
+						minimum = 5000;
+					break;
+					case "aglenergy":
+						minimum = 45000;
+					break;
+					case "bonds":
+						minimum = 72000;
+					break;
+				}
+
+				const user_details = await this.db.collection("users").doc(isid).get();
+				if(!user_details.exists){
+					response['msg'] = "Account Error";
+					response['error'] = "Your account details can't be found at the moment. Refresh your page and try again.";
+
+					return DashboardController.sendFailResponse(res, response);
+				}
+
+				if(user_details.data().balance < minimum){
+					response['msg'] = "Insufficient Balance";
+					response['error'] = "You dont have enough balance to trade on this plan. Kindly add funds to your account or check for a different plan!";
+
+					return DashboardController.sendFailResponse(res, response);
+				}
+
+				const _data = {
+					trade_amount: user_details.data().balance,
+					plan: plan,
+					minimum: minimum,
+					profit: 0,
+					risk_ratio: 0,
+					trade_id: generateRandomCodes(1, 10, 10)[0],
+					uid: user_id,
+					started_on: DashboardController.getCurrentDate(),
+					status: "started"
+				}
+
+				const start_trade = await this.db.collection("trades").doc(_data.trade_id).set(_data);
+
+				if(start_trade && _.isObject(start_trade)){
+					const update_user_balance = {
+						balance: 0,
+						trading: _data.trade_amount
+					};
+					this.db.collection("users").doc(isid).update(update_user_balance);
+					response['msg'] = "Success";
+					response['success_message'] = "You have successfully started a new trade. Congratulations !!";
+					return DashboardController.sendSuccessResponse(res, response);
+				}
+	
+				response['msg'] = "Error";
+				response['error'] = "Error !! Please confirm your entries or contact admin";
+	
+				return DashboardController.sendFailResponse(res, response);
+			}else{
+				response['msg'] = "Error";
+				response['error'] = "Something went wrong. Please contact your account manager";
+	
+				return DashboardController.sendFailResponse(res, response);
+			}
+		}
+		catch (e) {
+			let error = 'An error occurred processing your request. Please check your request and try again';
+			console.log(e);
+			if (e.name === 'CustomError' || e.name === 'ValidationError') {
+				error = e.message
+			}
+			console.log(error);
+			req.flash('error', error);
+			return DashboardController.sendFailResponse(res, error);
 		}
 	}
 

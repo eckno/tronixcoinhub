@@ -25,11 +25,11 @@
                                                     <div class="row g-3 mb-0 align-items-center">
                                                         <!--end col-->
                                                         <div class="col-auto">
-                                                            <button type="button" class="btn btn-primary"><i class="ri-add-circle-line align-middle me-1"></i> New Deposit</button>
+                                                            <a href="/secure/deposit"><button type="button" class="btn btn-primary"><i class="ri-add-circle-line align-middle me-1"></i> New Deposit</button></a>
                                                         </div>
                                                         <!--end col-->
                                                         <div class="col-auto">
-                                                            <button type="button" class="btn btn-success"><i class="ri-add-circle-line align-middle me-1"></i> Place withdrawal</button>
+                                                            <a href="/secure/withdraw"><button type="button" class="btn btn-success"><i class="ri-add-circle-line align-middle me-1"></i> Place withdrawal</button></a>
                                                         </div>
                                                         <!--end col-->
                                                     </div>
@@ -55,7 +55,7 @@
                                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                                     <div>
                                                         <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="<%= (user_details !== 'undefined' && user_details.total_withdrawn !== 'undefined') ? user_details.total_withdrawn : 0; %>"><%= (user_details !== 'undefined' && user_details.total_withdrawn !== 'undefined') ? user_details.total_withdrawn : 0; %></span> </h4>
-                                                        <a href="#" class="text-decoration-underline">See stats</a>
+                                                        <a href="/secure/transactions" class="text-decoration-underline">See stats</a>
                                                     </div>
                                                     <div class="avatar-sm flex-shrink-0">
                                                         <span class="avatar-title bg-success-subtle rounded fs-3">
@@ -103,7 +103,7 @@
                                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                                     <div>
                                                         <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="<%= (user_details !== 'undefined' && user_details.deposit !== 'undefined') ? user_details.deposit : 0; %>"><%= (user_details !== 'undefined' && user_details.deposit !== 'undefined') ? user_details.deposit : 0; %></span> </h4>
-                                                        <a href="#" class="text-decoration-underline">New Deposit</a>
+                                                        <a href="/secure/deposit" class="text-decoration-underline">New Deposit</a>
                                                     </div>
                                                     <div class="avatar-sm flex-shrink-0">
                                                         <span class="avatar-title bg-warning-subtle rounded fs-3">
@@ -127,7 +127,7 @@
                                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                                     <div>
                                                         <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="<%= (user_details !== 'undefined' && user_details.balance !== 'undefined') ? user_details.balance : 0; %>"><%= (user_details !== 'undefined' && user_details.balance !== 'undefined') ? user_details.balance : 0; %></span> </h4>
-                                                        <a href="#" class="text-decoration-underline">Withdraw money</a>
+                                                        <a href="/secure/withdraw" class="text-decoration-underline">Withdraw money</a>
                                                     </div>
                                                     <div class="avatar-sm flex-shrink-0">
                                                         <span class="avatar-title bg-primary-subtle rounded fs-3">

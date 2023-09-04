@@ -76,6 +76,44 @@ $(document).ready(function() {
         display_spinner();
         do_form_submit('deposit-form');
     });
+    $("#withdrawal-form").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('withdrawal-form');
+    });
+
+    $("#tronic-basic-form").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('tronic-basic-form');
+    });
+    $("#tronic-espp-form").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('tronic-espp-form');
+    });
+
+    $("#tronic-black-form").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('tronic-black-form');
+    });
+    $("#tronic-pro-form").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('tronic-pro-form');
+    });
+
+    $("#tronic-aglenergy-form").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('tronic-aglenergy-form');
+    });
+    $("#tronic-bonds-form").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('tronic-bonds-form');
+    });
     // $(".input_code").on("input", function() {
     //     var maxLength = parseInt($(this).attr("maxlength"));
     //     var inputValue = $(this).val();

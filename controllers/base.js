@@ -1,6 +1,6 @@
 
 const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
-const { ROUTE_LOGOUT } = require('../lib/page-routes');
+const { ROUTE_LOGIN } = require('../lib/page-routes');
 const _ = require('lodash');
 const { strtotime, preg_match, filter_var, humanize, empty, isObject, isArray } = require('../lib/utils');
 
@@ -10,7 +10,7 @@ const { strtotime, preg_match, filter_var, humanize, empty, isObject, isArray } 
 class BaseController {
 	constructor() {
 		this.db = getFirestore();
-		this.logout_url = ROUTE_LOGOUT;
+		this.logout_url = ROUTE_LOGIN;
 		this.live_domain = process.env.LIVE_DOMAIN || "";
 		this.footer_script = '';
 		this.footer_scripts = [];
@@ -316,6 +316,23 @@ class BaseController {
 
 		return errors;
 	}
+
+	static getCurrentDate() {
+		const currentDate = new Date();
+	  
+		const day = currentDate.getDate();
+		const month = currentDate.getMonth() + 1; // Months are zero-based (0 = January)
+		const year = currentDate.getFullYear();
+	  
+		// Pad single-digit day and month with leading zeros
+		const formattedDay = day < 10 ? `0${day}` : day;
+		const formattedMonth = month < 10 ? `0${month}` : month;
+	  
+		// Create the formatted date string
+		const formattedDate = `${formattedDay}-${formattedMonth}-${year}`;
+	  
+		return formattedDate;
+	  }
 
 }
 
