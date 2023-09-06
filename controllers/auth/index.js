@@ -6,8 +6,8 @@
 
 const _ = require('lodash');
 const BaseController = require('../base');
-const { ROUTE_HOME, ROUTE_LOGIN, ROUTE_DASHBOARD } = require("../../lib/page-routes");
-const { generateRandomCodes } = require("../../lib/utils");
+const { ROUTE_HOME, ROUTE_LOGIN, ROUTE_DASHBOARD, ROUTE_2FA } = require("../../lib/page-routes");
+const { generateRandomCodes, empty } = require("../../lib/utils");
 
 class AuthController extends BaseController {
 
@@ -54,12 +54,13 @@ class AuthController extends BaseController {
 				return AuthController.sendFailResponse(res, response);
 			}
 
-			let user_id, isid, auth, email = "";
+			let using_2fa = "No", user_id, isid, auth, email = "";
 			findUser.forEach((user) => {
 				isid = user.id;
 				user_id = user.data().account_id;
 				email = user.data().email;
 				auth = user.data().password;
+				using_2fa = user.data().settings.using_2fa;
 			});
 
 			if(!_.isEmpty(user_id) && !_.isEmpty(isid) && !_.isEmpty(email)){
@@ -68,6 +69,12 @@ class AuthController extends BaseController {
 					response['error'] = "Incorrect email address or password. Please check your inputs!";
 	
 					return AuthController.sendFailResponse(res, response);
+				}
+				if(!empty(using_2fa) && using_2fa === "Yes"){
+					///send 2fa email
+					response['redirect_url'] = ROUTE_2FA;
+					req.flash("success", "Kindly enter the four(4) digit 2fa code sent to your email.");
+					return AuthController.sendSuccessResponse(res, response);
 				}
 				req.session.user = {isid, user_id, email }
 
@@ -242,6 +249,56 @@ class AuthController extends BaseController {
 			console.log(error);
 			req.flash('error', error);
 			res.redirect('/');
+		}
+	}
+
+	async post_2faVerification(req, res){
+		if(!_.isEmpty(req) && !_.isEmpty(req.body)){
+			const post = AuthController.sanitizeRequestData(req.body);
+			let response = {};
+			const required_fields = ["code1", "code2", "code3", "code4"];
+			const errors = this.validateFields(post, required_fields, [], [], [],[],[]);
+			if(!_.isEmpty(errors)){
+				response['msg'] = "User Error";
+				response['error'] = "Incorrect access codes";
+
+				return AuthController.sendFailResponse(res, response);
+			}
+			const _code = `${post['code1']}${post['code2']}${post['code3']}${post['code4']}`;
+			const findUser = await this.db.collection("users").where("access_code", "==", _code).get();
+			if(findUser.empty){
+				response['msg'] = "User Error";
+				response['error'] = "Incorrect access codes";
+
+				return AuthController.sendFailResponse(res, response);
+			}
+
+			let user_id, isid, auth, email = "";
+			findUser.forEach((user) => {
+				isid = user.id;
+				user_id = user.data().account_id;
+				email = user.data().email;
+				auth = user.data().password;
+			});
+
+			if(!_.isEmpty(user_id) && !_.isEmpty(isid) && !_.isEmpty(email)){
+				this.db.collection("users").doc(isid).update({access_code: ""});
+				req.session.user = {isid, user_id, email }
+
+				response['redirect_url'] = ROUTE_DASHBOARD;
+				req.flash("success", "Login successful");
+				return AuthController.sendSuccessResponse(res, response);
+			}
+
+			response['msg'] = "Error";
+			response['error'] = "Error !! Please check your entries or contact admin";
+
+			return AuthController.sendFailResponse(res, response);
+		}else{
+			response['msg'] = "Error";
+			response['error'] = "Error !! Please check your entries or contact admin";
+
+			return AuthController.sendFailResponse(res, response);
 		}
 	}
 

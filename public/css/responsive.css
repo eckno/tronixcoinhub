@@ -1,0 +1,11 @@
+/*--------------------------------------------------
+    ## All responsive style
+---------------------------------------------------*/
+@media all and (min-width: 1600px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+      max-width: 1200px;
+  }
+  .main-header .top-header .topbar-left li {
+    padding: 0 36px;
+  }
+}

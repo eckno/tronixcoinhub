@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="Group_6983" data-name="Group 6983" transform="translate(1 1)">
+    <path id="Rectangle_2163" data-name="Rectangle 2163" d="M3,0H5A0,0,0,0,1,5,0V12a0,0,0,0,1,0,0H3A3,3,0,0,1,0,9V3A3,3,0,0,1,3,0Z" transform="translate(0 20)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_5736" data-name="Path 5736" d="M333,465h-6a3,3,0,0,1-3-3h0a3,3,0,0,1,3-3h6a3,3,0,0,1,3,3h0A3,3,0,0,1,333,465Z" transform="translate(-307 -419)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Rectangle_2164" data-name="Rectangle 2164" d="M0,0H2A3,3,0,0,1,5,3V9a3,3,0,0,1-3,3H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" transform="translate(41 20)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <rect id="Rectangle_2165" data-name="Rectangle 2165" width="6" height="16" rx="2" transform="translate(35 18)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_5737" data-name="Path 5737" d="M340,420v1a4,4,0,0,1-4,4H324a4,4,0,0,1-4-4v-1" transform="translate(-307 -419)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <rect id="Rectangle_2166" data-name="Rectangle 2166" width="6" height="16" rx="2" transform="translate(5 18)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_5738" data-name="Path 5738" d="M312,438v-7a12,12,0,0,1,12-12h12a12,12,0,0,1,12,12v7" transform="translate(-307 -419)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_5739" data-name="Path 5739" d="M336,462h2a10,10,0,0,0,10-10h0" transform="translate(-307 -419)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_346" data-name="Line 346" x2="2" transform="translate(22 32)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_5740" data-name="Path 5740" d="M325,438a5,5,0,0,1,5-5,5.077,5.077,0,0,1,5,5" transform="translate(-307 -419)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_5741" data-name="Path 5741" d="M335,438a5,5,0,0,1-2.733,4.458,4.057,4.057,0,0,0-2.267,3.6V448" transform="translate(-307 -419)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

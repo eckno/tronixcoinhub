@@ -6,7 +6,8 @@
 const express = require('express');
 const router = express.Router();
 
-const {	ROUTE_LOGOUT, ROUTE_HOME, ROUTE_UNAVAILABLE} = require('../lib/page-routes');
+const {	ROUTE_LOGOUT, ROUTE_HOME, ROUTE_ABOUT, ROUTE_CONTACT,
+	ROUTE_PLANS, ROUTE_UNAVAILABLE} = require('../lib/page-routes');
 
 const IndexController = require('../controllers/index');
 
@@ -17,6 +18,21 @@ router.get('/ofuoufoeufoefuefupeufpeu', async (req, res) => {
 router.get(ROUTE_HOME, async (req, res) => {
 	const indexController = new IndexController();
 	return indexController.indexAction(req, res);
+});
+
+router.get(ROUTE_ABOUT, async (req, res) => {
+	const indexController = new IndexController();
+	return indexController.viewAbout(req, res);
+});
+
+router.get(ROUTE_CONTACT, async (req, res) => {
+	const indexController = new IndexController();
+	return indexController.viewContact(req, res);
+});
+
+router.get(ROUTE_PLANS, async (req, res) => {
+	const indexController = new IndexController();
+	return indexController.viewPlans(req, res);
 });
 
 router.get(ROUTE_LOGOUT, (req, res) => {

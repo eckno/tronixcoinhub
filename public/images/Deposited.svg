@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="81.519" height="80.168" viewBox="0 0 81.519 80.168">
+  <g id="Group_4651" data-name="Group 4651" transform="translate(-806 -305.168)">
+    <path id="Path_5713" data-name="Path 5713" d="M839.356,325c8.036,9.833,15.327,18.414,15.327,28.95,0,15.989-7.852,17.03-23.841,17.03S807,369.939,807,353.95c0-10.534,7.29-19.117,15.327-28.95" transform="translate(0 13.356)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_5714" data-name="Path 5714" d="M817.406,329.921,814,318a22.562,22.562,0,0,0,23.841,0l-3.406,11.921C829.728,332.191,822.113,332.191,817.406,329.921Z" transform="translate(4.921 8.435)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <g id="Group_4649" data-name="Group 4649" transform="translate(825.732 346.871)">
+      <path id="Path_5715" data-name="Path 5715" d="M818,348.327a5.109,5.109,0,1,0,5.109-5.109,5.109,5.109,0,1,1,5.109-5.109" transform="translate(-818 -327.891)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_306" data-name="Line 306" y2="5" transform="translate(4.787 25.297)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_307" data-name="Line 307" y2="5" transform="translate(4.787 0.297)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+    <line id="Line_308" data-name="Line 308" y2="4" transform="translate(818.519 360.168)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_309" data-name="Line 309" y2="4" transform="translate(842.519 360.168)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <ellipse id="Ellipse_450" data-name="Ellipse 450" cx="19" cy="18.5" rx="19" ry="18.5" transform="translate(847.519 306.168)" fill="none" stroke="#ff9c1a" stroke-linejoin="round" stroke-width="2"/>
+    <g id="Group_4650" data-name="Group 4650" transform="translate(861.495 309.406)">
+      <path id="Path_5716" data-name="Path 5716" d="M839,326.327a5.109,5.109,0,1,0,5.109-5.109,5.109,5.109,0,1,1,5.109-5.109" transform="translate(-839 -305.891)" fill="none" stroke="#ff9c1a" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_310" data-name="Line 310" y2="5" transform="translate(5.024 25.762)" fill="none" stroke="#ff9c1a" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_311" data-name="Line 311" y2="5" transform="translate(5.024 -0.238)" fill="none" stroke="#ff9c1a" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+    <line id="Line_312" data-name="Line 312" y2="3" transform="translate(878.519 323.168)" fill="none" stroke="#ff9c1a" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_313" data-name="Line 313" y2="3" transform="translate(854.519 323.168)" fill="none" stroke="#ff9c1a" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_314" data-name="Line 314" x2="18" transform="translate(869.519 350.168)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_315" data-name="Line 315" x2="12" transform="translate(854.519 350.168)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_316" data-name="Line 316" x2="29" transform="translate(856.519 357.168)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_317" data-name="Line 317" x2="23" transform="translate(858.519 364.168)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_318" data-name="Line 318" x2="12" transform="translate(875.519 371.168)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_319" data-name="Line 319" x2="13" transform="translate(858.519 371.168)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_320" data-name="Line 320" x2="27" transform="translate(856.519 377.168)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_321" data-name="Line 321" x2="35" transform="translate(852.519 384.168)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="Group_6985" data-name="Group 6985" transform="translate(1)">
+    <line id="Line_498" data-name="Line 498" x1="4" transform="translate(0 7)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_499" data-name="Line 499" x1="4" transform="translate(0 15)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_500" data-name="Line 500" x1="4" transform="translate(0 23)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_501" data-name="Line 501" x1="4" transform="translate(0 31)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_502" data-name="Line 502" x1="4" transform="translate(0 39)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_5811" data-name="Path 5811" d="M854,579H807V532" transform="translate(-807 -532)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_5812" data-name="Path 5812" d="M816,576V565h8v11" transform="translate(-807 -532)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_5813" data-name="Path 5813" d="M824,576V557h8v19" transform="translate(-807 -532)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_5814" data-name="Path 5814" d="M832,576V550h8v26" transform="translate(-807 -532)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_5815" data-name="Path 5815" d="M848,576V542h5l-9-9-9,9h5v34" transform="translate(-807 -532)" fill="none" stroke="#523680" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

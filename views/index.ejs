@@ -1,114 +1,442 @@
+<%- include('./index/inc/header'); %>
 
-<div class="auth-page-wrapper pt-5">
-    <!-- auth page bg -->
-    <div class="auth-one-bg-position auth-one-bg" id="auth-particles">
-        <div class="bg-overlay"></div>
-
-        <div class="shape">
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1440 120">
-                <path d="M 0,36 C 144,53.6 432,123.2 720,124 C 1008,124.8 1296,56.8 1440,40L1440 140L0 140z"></path>
-            </svg>
+<section class="banner_section">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
         </div>
-    </div>
-
-    <!-- auth page content -->
-    <div class="auth-page-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="text-center mt-sm-5 mb-4 text-white-50">
-                        <div>
-                            <a href="/" class="d-inline-block auth-logo">
-                                <img src="/assets/images/logo-light.png" alt="" height="20">
-                            </a>
-                        </div>
-                        <p class="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
-                    </div>
-                </div>
-            </div>
-            <!-- end row -->
-
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6 col-xl-5">
-                    <div class="card mt-4">
-
-                        <div class="card-body p-4">
-                            <div class="text-center mt-2">
-                                <h5 class="text-primary">Welcome Back !</h5>
-                                <p class="text-muted">Sign in to continue to Velzon.</p>
-                            </div>
-                            <div class="p-2 mt-4">
-                                <form action="">
-
-                                    <div class="mb-3">
-                                        <label for="username" class="form-label">Username</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Enter username">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="slider-area">
+                        <div class="item">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6">
+                                    <div class="left-content">
+                                        <h6 class=" wow fadeInUp">Access more markets from a single account</h6>
+                                        <h2 class="wow fadeInUp" data-wow-delay="0.3s">At Tronixcoinhub,
+                                            Crypto is Easy.</h2>
                                     </div>
-
-                                    <div class="mb-3">
-                                        <div class="float-end">
-                                            <a href="auth-pass-reset-basic.html" class="text-muted">Forgot password?</a>
-                                        </div>
-                                        <label class="form-label" for="password-input">Password</label>
-                                        <div class="position-relative auth-pass-inputgroup mb-3">
-                                            <input type="password" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input">
-                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
-                                        </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="right-side-images wow fadeInRight" data-wow-delay="0.6s">
+                                        <img src="images/left.png" alt="img">
                                     </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
-                                        <label class="form-check-label" for="auth-remember-check">Remember me</label>
-                                    </div>
-
-                                    <div class="mt-4">
-                                        <button class="btn btn-success w-100" type="submit">Sign In</button>
-                                    </div>
-
-                                    <div class="mt-4 text-center">
-                                        <div class="signin-other-title">
-                                            <h5 class="fs-13 mb-4 title">Sign In with</h5>
-                                        </div>
-                                        <div>
-                                            <button type="button" class="btn btn-primary btn-icon waves-effect waves-light"><i class="ri-facebook-fill fs-16"></i></button>
-                                            <button type="button" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-google-fill fs-16"></i></button>
-                                            <button type="button" class="btn btn-dark btn-icon waves-effect waves-light"><i class="ri-github-fill fs-16"></i></button>
-                                            <button type="button" class="btn btn-info btn-icon waves-effect waves-light"><i class="ri-twitter-fill fs-16"></i></button>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
-                        <!-- end card body -->
                     </div>
-                    <!-- end card -->
+                </div>
 
-                    <div class="mt-4 text-center">
-                        <p class="mb-0">Don't have an account ? <a href="auth-signup-basic.html" class="fw-semibold text-primary text-decoration-underline"> Signup </a> </p>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="slider-area">
+                        <div class="item">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6">
+                                    <div class="left-content">
+                                        <h6 class=" wow fadeInUp">Secure & Easy Way To Invest.</h6>
+                                        <h2 class="wow fadeInUp" data-wow-delay="0.3s">Investment & Growth</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="right-side-images wow fadeInRight" data-wow-delay="0.6s">
+                                        <img src="images/left.png" alt="img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
-            <!-- end row -->
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="slider-area">
+                        <div class="item">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6">
+                                    <div class="left-content">
+                                        <h6 class=" wow fadeInUp">We have 24/7 support team</h6>
+                                        <h2 class="wow fadeInUp" data-wow-delay="0.3s">A fast & dedicated competent
+                                            support team</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="right-side-images wow fadeInRight" data-wow-delay="0.6s">
+                                        <img src="images/left.png" alt="img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- end container -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span><i class="fal fa-long-arrow-left"></i></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span><i class="fal fa-long-arrow-right"></i></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <!-- end auth page content -->
+</section>
 
-    <!-- footer -->
-    <footer class="footer">
+
+
+<!-- features-section start  -->
+<section class="features-section">
+    <div class="container-fluid">
         <div class="container">
+            <div class="heading-title">
+                <h6><span></span> Our Services</h6>
+                <h2>Services we provide</h2>
+            </div>
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="text-center">
-                        <p class="mb-0 text-muted">&copy;
-                            <script>document.write(new Date().getFullYear())</script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand
-                        </p>
+                <div class="col-lg-4 col-md-6">
+                    <div class="item active">
+                        <div class="icon">
+                            <img src="images/icon1.png" alt="img">
+                        </div>
+                        <h4>FOREX TRADING</h4>
+                        <p>Forex trading is the act of buying or selling currencies. Banks, central banks,
+                            corporations, institutional investors and individual traders exchange foreign
+                            currency for a variety of reasons, including balancing the markets,
+                            facilitating international trade and tourism, or making a profit.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="item">
+                        <div class="icon">
+                            <img src="images/icon2.png" alt="img">
+                        </div>
+                        <h4>CRYPTO TRADING & MINING</h4>
+                        <p>With cryptocurrency being young, and the market being historically volatile,
+                            there is no yes or no answer about the wisdom of investing in cryptocurrency.
+                            It is with this in mind that we
+                            cover some pros and cons and friendly (but not professional) advice.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="item">
+                        <div class="icon">
+                            <img src="images/icon3.png" alt="img">
+                        </div>
+                        <h4>REAL ESTATE INVESTMENT</h4>
+                        <p>In a bid to attain financial stability, many search for proper investments
+                            with their income. Improvement of realty property as part of a real estate investment
+                            strategy is
+                            generally considered to be a sub-specialty of real estate investing.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="item">
+                        <div class="icon">
+                            <img src="images/icon4.png" alt="img">
+                        </div>
+                        <h4>BINARY OPTIONS</h4>
+                        <p>A binary option is a type of option with a fixed payout in which
+                            you predict the outcome from two possible results. If your
+                            prediction is correct, you receive the agreed payout.
+                            If not, you lose your initial stake, and nothing more.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="item">
+                        <div class="icon">
+                            <img src="images/icon5.png" alt="img">
+                        </div>
+                        <h4>PRIVATE EQUITY</h4>
+                        <p>Private equity typically refers to investment funds organized as limited
+                            partnerships that are not publicly traded and whose investors are typically
+                            large institutional investors, university endowments, or wealthy individuals.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="item">
+                        <div class="icon">
+                            <img src="images/icon6.png" alt="img">
+                        </div>
+                        <h4>STOCK & COMMODITY INVESTMENTS</h4>
+                        <p>Invest in commodity-related stocks. Buying stocks to related to certain
+                            commodities is a way to bet on the value of a commodity without incurring
+                            all of the risk of futures trading. Commodity investments tend to attract
+                            more investor attention when inflation fears start to mount.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
-    <!-- end Footer -->
-</div>
-<!-- end auth-page-wrapper -->
+    </div>
+</section>
+<!-- features-section start  -->
+<!-- about-section start  -->
+<section class="about-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="left-content">
+                    <div class="heading-title">
+                        <h6><span></span> About us</h6>
+                        <h2>About Tronixcoinhub</h2>
+                        <p>Tronixcoinhub is an investment management company. We are run by a team of trading
+                            experts who generate profits by buying and selling currencies, stocks, options
+                            and commodities on the foreign exchange market.
+                            We employ a variety of trading techniques to achieve the set goals for the client.</p>
+                    </div>
+                    <div class="media">
+                        <div class="images">
+                            <img src="images/icon1.svg" alt="img">
+                        </div>
+                        <div class="media-body">
+                            <h3>Our Mission</h3>
+                            <p>We are a trading and investment management company aimed at providing clients the best
+                                possible services in today’s markets.</p>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="images">
+                            <img src="images/icon2.svg" alt="img">
+                        </div>
+                        <div class="media-body">
+                            <h3>Our Services</h3>
+                            <p>CryptoJack is a leading investment provider to financial market professionals. Our
+                                technical strategies cover equity, commodities and fixed-income markets. </p>
+                        </div>
+                    </div>
+                    <a href="/about" class="theme_btn">Read More</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="right-side">
+                    <img src="images/about-side.png" alt="img">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- about-section end  -->
+
+<!-- pracing section start  -->
+<section class="pricing-section">
+    <div class="container">
+        <div class="heading-title">
+            <h6><span></span>Investment Plans</h6>
+            <h2>Our Best Plans</h2>
+        </div>
+        <ul class="nav nav-pills" id="pills-tab1" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class=" " id="pills-home-tab1" data-bs-toggle="pill" data-bs-target="#pills-home1"
+                    type="button">Investment Plans</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="active" id="pills-profile-tab2" data-bs-toggle="pill" data-bs-target="#pills-profile2"
+                    type="button">Mining Plans</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent1">
+            <div class="tab-pane fade show active" id="pills-home1" style="overflow: visible;">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="pracing-item ">
+                            <!-- <div class="top-left">
+                                    <p>5.50%</p>
+                                </div> -->
+                            <div class="top-area">
+                                <img src="images/icon001.svg" alt="img">
+                                <p>Basic</p>
+                            </div>
+                            <ul>
+                                <li><span><i class="fal fa-check"></i></span>Minimum Deposit : </li>
+                                <li><span><i class="fal fa-check"></i></span>Maximum Deposit : </li>
+                            </ul>
+                            <a href="/login" class="buy-now">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="pracing-item active">
+                            <div class="top-area">
+                                <img src="images/icon02.svg" alt="img">
+                                <p>Platinum</p>
+                            </div>
+                            <ul>
+                                <li><span><i class="fal fa-check"></i></span>Minimum Deposit :</li>
+                                <li><span><i class="fal fa-check"></i></span>Maximum Deposit :</li>
+                            </ul>
+                            <a href="/login" class="buy-now">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="pracing-item">
+                            <!-- <div class="top-left">
+                                    <p>8.50%</p>
+                                </div> -->
+                            <div class="top-area">
+                                <img src="images/icon003.svg" alt="img">
+                                <p>Diamond</p>
+                            </div>
+                            <ul>
+                                <li><span><i class="fal fa-check"></i></span>Minimum Deposit : </li>
+                                <li><span><i class="fal fa-check"></i></span>Maximum Deposit : </li>
+                            </ul>
+                            <a href="/login" class="buy-now">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-profile2" style="overflow: visible;">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="pracing-item ">
+                            <!-- <div class="top-left">
+                                    <p>5.50%</p>
+                                </div> -->
+                            <div class="top-area">
+                                <img src="images/icon001.svg" alt="img">
+                                <p>Bronze</p>
+                            </div>
+                            <ul>
+                                <li><span><i class="fal fa-check"></i></span>Minimum Deposit :</li>
+                                <li><span><i class="fal fa-check"></i></span>Maximum Deposit :</li>
+                            </ul>
+                            <a href="/login" class="buy-now">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="pracing-item active">
+                            <!-- <div class="top-left">
+                                    <p>7.50%</p>
+                                </div> -->
+                            <div class="top-area">
+                                <img src="images/icon002.svg" alt="img">
+                                <p>Silver</p>
+                            </div>
+                            <ul>
+                                <li><span><i class="fal fa-check"></i></span>Minimum Deposit :</li>
+                                <li><span><i class="fal fa-check"></i></span>Maximum Deposit :</li>
+                            </ul>
+                            <a href="/login" class="buy-now">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="pracing-item ">
+                            <!-- <div class="top-left">
+                                    <p>8.50%</p>
+                                </div> -->
+                            <div class="top-area">
+                                <img src="images/icon003.svg" alt="img">
+                                <p>Gold</p>
+                            </div>
+                            <ul>
+                                <li><span><i class="fal fa-check"></i></span>Minimum Deposit :</li>
+                                <li><span><i class="fal fa-check"></i></span>Maximum Deposit :</li>
+                            </ul>
+                            <a href="/login" class="buy-now">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- pracing section end  -->
+
+<!-- counterup-section start  -->
+<section class="counterup-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4">
+                <div class="images">
+                    <img src="images/counterup.png" alt="img">
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="item one_item">
+                            <img src="images/handshake.png" alt="img">
+                            <h5>Total Members</h5>
+                            <h3><span class="counter">2,000</span>+</h3>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="item">
+                            <img src="images/profit.svg" alt="img">
+                            <h5>Total Profits</h5>
+                            <h3>$<span class="counter">120,000,000</span>+</h3>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="item">
+                            <img src="images/Transaction.svg" alt="img">
+                            <h5>Total Transactions</h5>
+                            <h3><span class="counter">2800</span>+</h3>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="item last_item">
+                            <img src="images/Deposited.svg" alt="img">
+                            <h5>Total Deposited</h5>
+                            <h3>$<span class="counter">10,000,000</span>+</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- counterup-section end  -->
+
+
+<!-- payment section start  -->
+<section class="payment-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Payment We Accept</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>We accept all major banking and fiat payment methods to make your investment process easier
+                            with our platform.</p>
+                        <h6>We Accepted These Payment Methods</h6>
+                        <ul>
+                            <li><a href="#"><img src="images/card.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card1.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card2.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card3.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card4.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card5.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card6.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card7.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card8.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card9.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card10.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card11.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card12.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card13.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card14.svg" alt="img"></a></li>
+                            <li><a href="#"><img src="images/card15.svg" alt="img"></a></li>
+                        </ul>
+                        <a href="/login" class="theme_btn">Get started</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </div>
+</section>
+<!-- payment section end  -->
+<%- include('./index/inc/footer'); %>

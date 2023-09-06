@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="52.859" height="52.345" viewBox="0 0 52.859 52.345">
+  <g id="net-profit-icon" transform="translate(-13.961 -15.333)">
+    <g id="Group_7101" data-name="Group 7101" transform="translate(-792.039 -289.835)">
+      <path id="Path_5713" data-name="Path 5713" d="M827.839,325c5.176,6.333,9.871,11.86,9.871,18.646,0,10.3-5.057,10.968-15.355,10.968S807,353.944,807,343.646c0-6.785,4.7-12.313,9.871-18.646" transform="translate(0 1.899)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_5714" data-name="Path 5714" d="M816.193,325.678,814,318a14.531,14.531,0,0,0,15.355,0l-2.194,7.678A14.262,14.262,0,0,1,816.193,325.678Z" transform="translate(0.678 1.221)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      <g id="Group_4649" data-name="Group 4649" transform="translate(819.065 332.574)">
+        <path id="Path_5715" data-name="Path 5715" d="M818,342.871a3.29,3.29,0,1,0,3.29-3.29,3.29,3.29,0,1,1,3.29-3.29" transform="translate(-818 -329.901)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+        <line id="Line_306" data-name="Line 306" y2="3.22" transform="translate(3.083 16.101)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+        <line id="Line_307" data-name="Line 307" y2="3.22" transform="translate(3.083 0)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <line id="Line_308" data-name="Line 308" y2="2.576" transform="translate(814.419 340.947)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_309" data-name="Line 309" y2="2.576" transform="translate(829.877 340.947)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      <ellipse id="Ellipse_450" data-name="Ellipse 450" cx="12.237" cy="11.915" rx="12.237" ry="11.915" transform="translate(833.097 306.168)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      <g id="Group_4650" data-name="Group 4650" transform="translate(842.098 308.1)">
+        <path id="Path_5716" data-name="Path 5716" d="M839,320.871a3.29,3.29,0,1,0,3.29-3.29,3.29,3.29,0,1,1,3.291-3.29" transform="translate(-839 -307.556)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+        <line id="Line_310" data-name="Line 310" y2="3.22" transform="translate(3.236 16.746)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+        <line id="Line_311" data-name="Line 311" y2="3.22" transform="translate(3.236 0)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <line id="Line_312" data-name="Line 312" y2="1.932" transform="translate(853.063 317.117)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_313" data-name="Line 313" y2="1.932" transform="translate(837.605 317.117)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_314" data-name="Line 314" x2="11.593" transform="translate(847.266 334.507)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_315" data-name="Line 315" x2="7.729" transform="translate(837.605 334.507)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_316" data-name="Line 316" x2="18.678" transform="translate(838.893 339.015)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_317" data-name="Line 317" x2="14.813" transform="translate(840.182 343.523)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_318" data-name="Line 318" x2="7.729" transform="translate(851.131 348.032)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_319" data-name="Line 319" x2="8.373" transform="translate(840.182 348.032)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_320" data-name="Line 320" x2="17.39" transform="translate(838.893 351.896)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_321" data-name="Line 321" x2="22.542" transform="translate(836.317 356.405)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>
