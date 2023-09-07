@@ -9,6 +9,7 @@ const BaseController = require('../base');
 const { ROUTE_PROFILE, ROUTE_DEPOSIT_SUMMARY, ROUTE_DASHBOARD, ROUTE_WITHDRAWAL_SUMMARY } = require("../../lib/page-routes");
 const { empty } = require('../../lib/utils');
 const { generateRandomCodes } = require("../../lib/utils");
+const EmailService = require("../emailController");
 
 class DashboardController extends BaseController {
 
@@ -466,6 +467,14 @@ class DashboardController extends BaseController {
 				const create_deposit = await this.db.collection("deposits").doc(deposit_data.depid).set(deposit_data);
 
 				if(create_deposit && _.isObject(create_deposit)){
+					const mail = {
+						user_data: {firstname:req.session.user.uname, amount: deposit_data.amount, transaction_id: deposit_data.depid}, file_path: "../views/emails/deposit.handlebars", subject: "Successful deposit to your account"
+					}
+					const emailService = new EmailService();
+					const send_email = await emailService.initEmail(mail);
+					if(send_email){
+						console.log('success');
+					}
 					this.db.collection("users").doc(isid).update({deposit: deposit_data.amount});
 					this.db.collection('transactions').doc().set(deposit_data);
 					req.flash("success", "Your deposit has been successfully created. <br><br>Kindly copy your generated wallet address and complete your transfer to fund your account.");
@@ -530,9 +539,9 @@ class DashboardController extends BaseController {
 					return DashboardController.sendFailResponse(res, response);
 				}
 
-				if(post['amount'] < 5){
+				if(post['amount'] < 10){
 					response['msg'] = "incorrect amount";
-					response['error'] = "You can not make a deposit less than $50 !";
+					response['error'] = "You can not withdraw less than $10 !";
 
 					return DashboardController.sendFailResponse(res, response);
 				}
@@ -550,6 +559,14 @@ class DashboardController extends BaseController {
 				const submit_withdrawal = await this.db.collection("withdrawals").doc(_data.wid).set(_data);
 
 				if(submit_withdrawal && _.isObject(submit_withdrawal)){
+					const mail = {
+						user_data: {firstname:req.session.user.uname, amount: _data.amount, transaction_id: _data.wid}, file_path: "../views/emails/withdrawal.handlebars", subject: "You have placed withdrawal"
+					}
+					const emailService = new EmailService();
+					const send_email = await emailService.initEmail(mail);
+					if(send_email){
+						console.log('success');
+					}
 					this.db.collection("users").doc(isid).update({withdrawal: _data.amount});
 					this.db.collection('transactions').doc().set(_data);
 					req.flash("success", "Your withdrawal request has been submitted successfully and will be attended to in the few minutes.");

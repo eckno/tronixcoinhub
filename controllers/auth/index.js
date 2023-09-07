@@ -6,9 +6,9 @@
 
 const _ = require('lodash');
 const BaseController = require('../base');
-const { ROUTE_HOME, ROUTE_LOGIN, ROUTE_DASHBOARD, ROUTE_2FA } = require("../../lib/page-routes");
+const { ROUTE_HOME, ROUTE_CREATE_NEW_PASSWORD, ROUTE_LOGIN, ROUTE_DASHBOARD, ROUTE_2FA } = require("../../lib/page-routes");
 const { generateRandomCodes, empty } = require("../../lib/utils");
-
+const EmailService = require("../emailController");
 class AuthController extends BaseController {
 
 	constructor(props) {
@@ -151,8 +151,16 @@ class AuthController extends BaseController {
 			}
 
 			const create_new_user = await this.db.collection("users").doc(new_user_data['email']).set(new_user_data);
-			//console.log(create_new_user);
+			console.log(create_new_user);
 			if(create_new_user && _.isObject(create_new_user)){
+				const mail = {
+					user_data: new_user_data, file_path: "../views/emails/welcome.handlebars", subject: "Welcome To Tronixcoin"
+				}
+				const emailService = new EmailService();
+				const send_email = await emailService.initEmail(mail);
+				if(send_email){
+					console.log('success');
+				}
 				response['msg'] = "Success";
 				response['error'] = "You have successfully created a new user.";
 				response['redirect_url'] = ROUTE_LOGIN;
@@ -221,9 +229,17 @@ class AuthController extends BaseController {
 
 				const update_user_data = { reset_token: generateRandomCodes(1, 15, 15) }
 				const update_user = await this.db.collection("users").doc(email).update(update_user_data);
-				
+				const resetLink = `${ROUTE_CREATE_NEW_PASSWORD}?token=${update_user_data.reset_token}`;
 				if(update_user && _.isObject(update_user)){
 					//////  SEND EMAIL AND RETURN SUCCESS AFTER SEND
+					const mail = {
+						user_data: {reset_link: resetLink}, file_path: "../views/emails/password-reset.handlebars", subject: "Reset password request"
+					}
+					const emailService = new EmailService();
+					const send_email = await emailService.initEmail(mail);
+					if(send_email){
+						console.log('success');
+					}
 					response['msg'] = "Success";
 					response['success'] = "We have sent a reset link to your email address, follow the instruction to reset your password.";
 					return AuthController.sendSuccessResponse(res, response);
@@ -241,6 +257,24 @@ class AuthController extends BaseController {
 			}
 		}
 		catch (e) {
+			let error = 'An error occurred processing your request. Please check your request and try again';
+			console.log(e);
+			if (e.name === 'CustomError' || e.name === 'ValidationError') {
+				error = e.message
+			}
+			console.log(error);
+			req.flash('error', error);
+			res.redirect('/');
+		}
+	}
+
+	async view_2fa(req, res) {
+		try {
+			res.render('auth/2fa', this.setTemplateParameters(req, {
+				page_styles: [],
+				page_title: '',
+			}));
+		} catch (e) {
 			let error = 'An error occurred processing your request. Please check your request and try again';
 			console.log(e);
 			if (e.name === 'CustomError' || e.name === 'ValidationError') {

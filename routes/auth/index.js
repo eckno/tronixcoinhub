@@ -6,7 +6,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {	ROUTE_LOGIN, ROUTE_REGISTER, ROUTE_FORGOT_PASSWORD} = require('../../lib/page-routes');
+const {	ROUTE_LOGIN, ROUTE_2FA, ROUTE_REGISTER, ROUTE_FORGOT_PASSWORD} = require('../../lib/page-routes');
 
 const AuthController = require('../../controllers/auth/index');
 
@@ -36,6 +36,11 @@ router.get(ROUTE_FORGOT_PASSWORD, (req, res) => {
 router.post(ROUTE_FORGOT_PASSWORD, (req, res) => {
 	const authController = new AuthController();
 	return authController.postResetPasswordAction(req, res);
+});
+
+router.get(ROUTE_2FA, (req, res) => {
+	const authController = new AuthController();
+	return authController.view_2fa(req, res);
 });
 
 

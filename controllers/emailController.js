@@ -1,8 +1,9 @@
 "use strict";
+require('dotenv').config();
 const path = require("path");
 const fs = require("fs");
 const handlebars = require("handlebars");
-const BaseController = require('../base');
+const BaseController = require('./base');
 const nodemailer = require("nodemailer");
 const { empty } = require('../lib/utils');
 
@@ -10,27 +11,32 @@ const { empty } = require('../lib/utils');
 class EmailService extends BaseController {
     constructor () {
         super();
-        this.from = "info@tronixcoinhub.com";
-        this.transporter = nodemailer.createTransport({
-            host: "smtp.tronixcoinhub.com", //server337.web-hosting.com
-            port: 465,
-            secure: true,
+        this.from = (process.env.FROM_EMAIL) ? process.env.FROM_EMAIL : "info@tronixcoinhub.com";
+        //this.
+    }
+
+    async mailSender({to_email, subject}, email_temp) {
+        // send mail with defined transport object
+        try{
+            const transporter = nodemailer.createTransport({
+            host: (this.is_dev === true) ? process.env.SMTP_SERVER_DEV : process.env.SMTP_SERVER_LIVE, //server337.web-hosting.com
+            port: (this.is_dev === true) ? process.env.SMTP_PORT_DEV : process.env.SMTP_PORT_LIVE,
+            secure: (this.is_dev === true) ? false : true,
             auth: {
                 // TODO: replace `user` and `pass` values from <https://forwardemail.net>
                 user: "info@tronixcoinhub.com",
                 pass: "k9=VzdlO4Ki=",
             },
+            tls: {
+			  rejectUnauthorized: false,
+			  minVersion: "TLSv1.2"
+		  }
         });
-    }
-
-    static async mailSender({to_email, subject}, email_temp) {
-        // send mail with defined transport object
-        try{
-            const info = await this.transporter.sendMail({
+            const info = await transporter.sendMail({
             from: `"Tronixcoin" <${this.from}>`, // sender address
             to: to_email, // list of receivers
             subject: subject, // Subject line
-            text: email_temp, // plain text body
+            text: "", // plain text body
             html: email_temp, // html body
             });
 
@@ -46,11 +52,12 @@ class EmailService extends BaseController {
 
     }
 
-    static async initEmail({user_data, file_path, subject}){
+    async initEmail({user_data, file_path, subject}){
         try{
             if(!empty(user_data) && !empty(file_path)){
                 let mail_to_send;
                 let full_file_path = path.join(__dirname, file_path);
+                console.log(full_file_path);
                 if(!fs.existsSync(full_file_path)){
                     return false;
                 }
@@ -59,12 +66,13 @@ class EmailService extends BaseController {
                 const mail_template = handlebars.compile(get_mail_template);
 
                 mail_to_send = mail_template({...user_data});
-
                 const sendEmail = await this.mailSender({to_email: user_data.email, subject}, mail_to_send);
                 if(sendEmail){
 
-                    return true;
+                    return sendEmail;
                 }
+
+                return false;
             }
         } catch (e) {
             console.log(e);
