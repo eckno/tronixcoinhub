@@ -2,10 +2,10 @@
   "name": "tronixcoinhub",
   "version": "1.0.0",
   "description": "tronixcoinhub",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "env-cmd -f ./config/live.env babel-node index.js",
     "live": "env-cmd -f ./config/live.env babel-node index.js",
     "dev": "env-cmd -f ./config/dev.env  nodemon --exec babel-node index.js",
     "proxy": "node proxy.js"
