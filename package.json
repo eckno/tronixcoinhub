@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "live": "env-cmd -f ./config/live.env babel-node server.js",
-    "dev": "env-cmd -f ./config/dev.env  nodemon --exec babel-node server.js",
+    "live": "env-cmd -f ./config/live.env babel-node index.js",
+    "dev": "env-cmd -f ./config/dev.env  nodemon --exec babel-node index.js",
     "proxy": "node proxy.js"
   },
   "keywords": [
