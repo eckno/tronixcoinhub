@@ -21,3 +21,6 @@ localurl.key
 proxy.js
 config/live.env
 config/dev.env
+config/private_key.key
+config/tronixcoin_com.crt
+config/tronixcoin_com.ca-bundle

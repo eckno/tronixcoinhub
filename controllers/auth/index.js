@@ -60,7 +60,7 @@ class AuthController extends BaseController {
 				user_id = user.data().account_id;
 				email = user.data().email;
 				auth = user.data().password;
-				using_2fa = user.data().settings.using_2fa;
+				using_2fa = (!empty(user.data().settings) && !empty(user.data().settings.using_2fa)) ? user.data().settings.using_2fa : "No";
 			});
 
 			if(!_.isEmpty(user_id) && !_.isEmpty(isid) && !_.isEmpty(email)){
