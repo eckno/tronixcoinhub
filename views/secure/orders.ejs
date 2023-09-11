@@ -1,0 +1,93 @@
+<%- include('../partials/header'); %>
+    <%- include('../partials/top-header'); %>
+        <%- include('../partials/sidebar'); %>
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0">Trade</h4>
+
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">trade</a></li>
+                                        <li class="breadcrumb-item active">orders</li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title mb-0 flex-grow-1">Trades</h4>
+                                </div><!-- end card header -->
+
+                                <div class="card-body">
+                                    <table id="myTable" class="display">
+                                        <thead>
+                                            <tr>
+                                                <th>_id</th>
+                                                <th>Plan</th>
+                                                <th>Trade amount</th>
+                                                <th>Profit</th>
+                                                <th>Risk ratio</th>
+                                                <th>Status</th>
+                                                <th>Date started</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% if(typeof getOrders !=='undefined' && getOrders !=="" &&
+                                                typeof getOrders==='object' ){ %>
+                                                <% getOrders.forEach((doc)=> { %>
+                                                    <tr>
+                                                        <td><%- (typeof doc.data().trade_id !=='undefined' ) ?
+                                                                doc.data().trade_id : '' ; %></td>
+                                                        <td><%- (typeof doc.data().plan !=='undefined' ) ?
+                                                                doc.data().plan : '' ; %></td>
+                                                        <td>$<%- (typeof doc.data().trade_amount !=='undefined' ) ?
+                                                                doc.data().trade_amount : '' ; %></td>
+                                                        <td>$<%- (typeof doc.data().profit
+                                                                    !=='undefined' ) ? doc.data().profit : '' ;
+                                                                    %></td>
+                                                        <td><%- (typeof doc.data().risk_ratio !=='undefined' ) ? doc.data().risk_ratio : '' ; %></td>
+                                                        <td><span class="badge bg-primary"><%- (typeof doc.data().status !=='undefined' ) ? doc.data().status : '' ; %></span>
+                                                        </td>
+                                                        <td><%- (typeof doc.data().started_on !=='undefined' ) ? doc.data().started_on : '' ; %></td>
+                                                    </tr>
+                                                    <% }) %>
+                                                        <% } else { %>
+                                                            <h4>You have placed no trade yet !</h4>
+                                                            <% } %>
+
+                                        </tbody>
+                                    </table>
+                                </div><!-- end card-body -->
+                            </div><!-- end card -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+
+
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+
+            <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+            <%- include('../partials/footer'); %>
+                <script>
+                    $(document).ready(function () {
+                        $('#myTable').DataTable();
+                    });
+                </script>

@@ -34,8 +34,12 @@ class DashboardController extends BaseController {
 
 	async indexAction(req, res) {
 		try {
-			const user_id = req.session.user.isid;
-			const user_details = await this.db.collection("users").doc(user_id).get();
+			const _id = req.session.user.isid;
+			const user_id = req.session.user.user_id;
+			const user_details = await this.db.collection("users").doc(_id).get();
+			const tradeCount = await this.db.collection("trades").where("uid", "==", user_id).count().get();
+			const runningTrade = await this.db.collection("trades").where("uid", "==", user_id).where("status", "==", "started").count().get();
+			
 			if(!user_details.exists){
 				return res.redirect('/');
 			}
@@ -43,7 +47,9 @@ class DashboardController extends BaseController {
 			res.render('secure/dashboard', this.setTemplateParameters(req, {
 				page_styles: [],
 				page_title: '',
-				user_details
+				user_details: user_details.data(),
+				trades: tradeCount.data().count,
+				runningTrade: runningTrade.data().count
 			}));
 		} catch (e) {
 			let error = 'An error occurred processing your request. Please check your request and try again';
@@ -569,7 +575,7 @@ class DashboardController extends BaseController {
 					}
 					this.db.collection("users").doc(isid).update({withdrawal: _data.amount});
 					this.db.collection('transactions').doc().set(_data);
-					req.flash("success", "Your withdrawal request has been submitted successfully and will be attended to in the few minutes.");
+					req.flash("success", "Your withdrawal request has been submitted successfully and will be attended to in few minutes.");
 					response['redirect_url'] = `${ROUTE_WITHDRAWAL_SUMMARY}/${_data.wid}`;
 					return DashboardController.sendSuccessResponse(res, response);
 				}
@@ -689,6 +695,14 @@ class DashboardController extends BaseController {
 					return DashboardController.sendFailResponse(res, response);
 				}
 
+				const duplicateTrade = await this.db.collection("trades").where("uid", "==", user_id).where("status", "==", "started").count().get();
+				if(duplicateTrade.data().count >= 1){
+					response['msg'] = "Account Error";
+					response['error'] = "You already have a running trade. Kindly wait for your running trade to be completed before entering a new one.";
+
+					return DashboardController.sendFailResponse(res, response);
+				}
+
 				const _data = {
 					trade_amount: user_details.data().balance,
 					plan: plan,
@@ -734,6 +748,54 @@ class DashboardController extends BaseController {
 			console.log(error);
 			req.flash('error', error);
 			return DashboardController.sendFailResponse(res, error);
+		}
+	}
+
+	async viewTransactions(req, res) {
+		try {
+			const user_id = req.session.user.user_id;
+			let getTransactions = await this.db.collection("transactions").where("uid", "==", user_id).get();
+			if(getTransactions.empty){
+				getTransactions = {};
+			}
+			res.render('secure/transactions', this.setTemplateParameters(req, {
+				page_styles: [],
+				page_title: '',
+				getTransactions
+			}));
+		} catch (e) {
+			let error = 'An error occurred processing your request. Please check your request and try again';
+			console.log(e);
+			if (e.name === 'CustomError' || e.name === 'ValidationError') {
+				error = e.message
+			}
+			console.log(error);
+			req.flash('error', error);
+			res.redirect('/');
+		}
+	}
+
+	async viewOrders(req, res) {
+		try {
+			const user_id = req.session.user.user_id;
+			let getOrders = await this.db.collection("trades").where("uid", "==", user_id).where("status", "==", "started").get();
+			if(getOrders.empty){
+				getOrders = {};
+			}
+			res.render('secure/orders', this.setTemplateParameters(req, {
+				page_styles: [],
+				page_title: '',
+				getOrders
+			}));
+		} catch (e) {
+			let error = 'An error occurred processing your request. Please check your request and try again';
+			console.log(e);
+			if (e.name === 'CustomError' || e.name === 'ValidationError') {
+				error = e.message
+			}
+			console.log(error);
+			req.flash('error', error);
+			res.redirect('/');
 		}
 	}
 

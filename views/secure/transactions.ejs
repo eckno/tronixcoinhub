@@ -1,0 +1,82 @@
+<%- include('../partials/header'); %>
+<%- include('../partials/top-header'); %>
+<%- include('../partials/sidebar'); %>
+
+<div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0">Stats</h4>
+
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">account</a></li>
+                                        <li class="breadcrumb-item active">transactions</li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title mb-0 flex-grow-1">Transactions</h4>
+                                </div><!-- end card header -->
+
+                                <div class="card-body">
+                                    <table id="myTable" class="display">
+                                        <thead>
+                                            <tr>
+                                                <th>_id</th>
+                                                <th>Amount</th>
+                                                <th>Network</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% if(typeof getTransactions !== 'undefined' && getTransactions !== "" && typeof getTransactions === 'object'){ %>
+                                                <% getTransactions.forEach((doc) => { %>
+                                                    <tr>
+                                                        <td><%- (typeof doc.data().depid !== 'undefined') ? doc.data().depid : '' ; %><%- (typeof doc.data().wid !=='undefined' ) ? doc.data().wid : '' ; %></td>
+                                                        <td><%- (typeof doc.data().amount !=='undefined' ) ? doc.data().amount : '' ; %></td>
+                                                        <td><%- (typeof doc.data().depid !=='undefined' ) ? doc.data().crypto_network : '' ; %></td>
+                                                        <td><span class="badge bg-primary"><%- (typeof doc.data().status !=='undefined' ) ? doc.data().status : '' ; %></span></td>
+                                                        <td><a href="<%- (typeof doc.data().depid !== 'undefined') ? '/secure/deposit/summary/' + doc.data().depid : '' ; %><%- (typeof doc.data().wid !=='undefined' ) ? '/secure/withdraw/summary/' + doc.data().wid : '' ; %>" style="font-size: 18px; color: royalblue;"><i class="ri-eye-line"></i></a></td>
+                                                    </tr>
+                                                <% }) %>
+                                            <% } else { %>
+                                                <h4>You have made no transaction yet !</h4>
+                                            <% } %>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div><!-- end card-body -->
+                            </div><!-- end card -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                    
+
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+<%- include('../partials/footer'); %>
+<script>
+    $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+</script>
