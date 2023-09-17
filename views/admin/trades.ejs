@@ -1,6 +1,6 @@
 <%- include('../partials/header'); %>
     <%- include('../partials/top-header'); %>
-        <%- include('../partials/sidebar'); %>
+        <%- include('./inc/sidebar'); %>
 
             <div class="page-content">
                 <div class="container-fluid">
@@ -9,12 +9,12 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0">Trade</h4>
+                                <h4 class="mb-sm-0">admin</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">trade</a></li>
-                                        <li class="breadcrumb-item active">orders</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">account</a></li>
+                                        <li class="breadcrumb-item active">trades</li>
                                     </ol>
                                 </div>
 
@@ -36,35 +36,39 @@
                                             <tr>
                                                 <th>_id</th>
                                                 <th>Plan</th>
-                                                <th>Trade amount</th>
+                                                <th>Tamount</th>
+                                                <th>Minimum</th>
                                                 <th>Profit</th>
-                                                <th>Risk ratio</th>
-                                                <th>Status</th>
-                                                <th>Date started</th>
+                                                <th>Placed on</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <% if(typeof getOrders !=='undefined' && getOrders !== "" &&
-                                                typeof getOrders === 'object' ){ %>
-                                                <% getOrders.forEach((doc)=> { %>
+                                            <% if(typeof trades !=='undefined' && trades !=="" && typeof
+                                                trades==='object' ){ %>
+                                                <% trades.forEach((doc)=> { %>
                                                     <tr>
                                                         <td><%- (typeof doc.data().trade_id !=='undefined' ) ?
-                                                                doc.data().trade_id : '' ; %></td>
+                                                                doc.data().trade_id : '' ;
+                                                                %></td>
                                                         <td><%- (typeof doc.data().plan !=='undefined' ) ?
                                                                 doc.data().plan : '' ; %></td>
                                                         <td>$<%- (typeof doc.data().trade_amount !=='undefined' ) ?
                                                                 doc.data().trade_amount : '' ; %></td>
-                                                        <td>$<%- (typeof doc.data().profit
-                                                                    !=='undefined' ) ? doc.data().profit : '' ;
-                                                                    %></td>
-                                                        <td><%- (typeof doc.data().risk_ratio !=='undefined' ) ? doc.data().risk_ratio : '' ; %></td>
-                                                        <td><span class="badge bg-primary"><%- (typeof doc.data().status !=='undefined' ) ? doc.data().status : '' ; %></span>
+                                                        <td><%- (typeof doc.data().minimum !=='undefined' ) ?
+                                                                doc.data().minimum : '' ; %></td>
+                                                        <td><%- (typeof doc.data().profit !=='undefined' ) ?
+                                                                doc.data().profit : '' ; %></td>
+                                                        <td><%- (typeof doc.data().started_on!=='undefined' ) ? doc.data().started_on : '' ;%></span>
                                                         </td>
-                                                        <td><%- (typeof doc.data().started_on !=='undefined' ) ? doc.data().started_on : '' ; %></td>
+                                                        <td>
+                                                            <a href="/admin/trades/<%- (typeof doc.data().trade_id!=='undefined' ) ? doc.data().trade_id : '' ;%>" class="btn btn-success btn-sm">Liquidate</a>
+                                                            <a href="javascript:void(0)" onclick="addProfitMod(`<%- (typeof doc.data().trade_id!=='undefined' ) ? doc.data().trade_id : '' ;%>`)" class="btn btn-primary btn-sm">Add Profit</a>
+                                                        </td>
                                                     </tr>
                                                     <% }) %>
                                                         <% } else { %>
-                                                            <h4>You have placed no trade yet !</h4>
+                                                            <h4>You have no item yet yet !</h4>
                                                             <% } %>
 
                                         </tbody>
@@ -80,6 +84,24 @@
 
                 </div>
                 <!-- container-fluid -->
+            </div>
+
+            <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body text-center p-5">
+                            <form action="/admin/trades" id="add-profit-form">
+                                <label for="">Profit</label>
+                                <input type="number" name="profit" id="profit" class="form-control">
+                                <input type="hidden" name="tid" id="tid">
+                                <div class="form-group mt-3">
+                                    <button class="btn btn-primary">submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
             </div>
             <!-- End Page-content -->
             <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />

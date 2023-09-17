@@ -1,0 +1,186 @@
+<%- include('../partials/header'); %>
+    <%- include('../partials/top-header'); %>
+        <%- include('./inc/sidebar'); %>
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col">
+
+                            <div class="h-100">
+                                <div class="row mb-3 pb-1">
+                                    <div class="col-12">
+                                        <div class="d-flex align-items-lg-center flex-lg-row flex-column">
+                                            <div class="flex-grow-1">
+                                                <h4 class="fs-16 mb-1"><span class="timer_"></span>, Admin!</h4>
+                                            </div>
+                                            <div class="mt-3 mt-lg-0">
+                                                <form action="javascript:void(0);">
+                                                    <div class="row g-3 mb-0 align-items-center">
+                                                        <!--end col-->
+                                                        <div class="col-auto">
+                                                            <button data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" type="button" class="btn btn-primary"><i
+                                                                        class="ri-add-circle-line align-middle me-1"></i>
+                                                                    Add Wallet</button>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-auto">
+                                                            <button type="button"
+                                                                    class="btn btn-success"><i
+                                                                        class="ri-add-circle-line align-middle me-1"></i>
+                                                                    Place withdrawal</button>
+                                                        </div>
+                                                        <!--end col-->
+                                                    </div>
+                                                    <!--end row-->
+                                                </form>
+                                            </div>
+                                        </div><!-- end card header -->
+                                    </div>
+                                    <!--end col-->
+                                </div>
+                                <!--end row-->
+
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6">
+                                        <!-- card -->
+                                        <div class="card card-animate">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1 overflow-hidden">
+                                                        <p
+                                                            class="text-uppercase fw-medium text-muted text-truncate mb-0">
+                                                            Total Members</p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                                    <div>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span
+                                                                class="counter-value"
+                                                                data-target="<%- members %>"><%- members %></span> </h4>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end col -->
+
+                                    <div class="col-xl-3 col-md-6">
+                                        <!-- card -->
+                                        <div class="card card-animate">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1 overflow-hidden">
+                                                        <p
+                                                            class="text-uppercase fw-medium text-muted text-truncate mb-0">
+                                                            Ongoing Trades</p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                                    <div>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span
+                                                                class="counter-value" data-target="<%- trades %>"><%- trades %></span></h4>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end col -->
+
+                                    <div class="col-xl-3 col-md-6">
+                                        <!-- card -->
+                                        <div class="card card-animate">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1 overflow-hidden">
+                                                        <p
+                                                            class="text-uppercase fw-medium text-muted text-truncate mb-0">
+                                                            New Deposits</p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                                    <div>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span
+                                                                class="counter-value"
+                                                                data-target="<%- (deposits !== 'undefined') ? deposits : 0; %>"><%- (deposits !=='undefined' ) ? deposits : 0; %></span> </h4>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end col -->
+
+                                    <div class="col-xl-3 col-md-6">
+                                        <!-- card -->
+                                        <div class="card card-animate">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1 overflow-hidden">
+                                                        <p
+                                                            class="text-uppercase fw-medium text-muted text-truncate mb-0">
+                                                            New Withdrawals</p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                                    <div>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span
+                                                                class="counter-value"
+                                                                data-target="<%- (withdrawals !== 'undefined') ? withdrawals : 0; %>"><%-
+                                                                    (withdrawals !=='undefined') ? withdrawals : 0;
+                                                                    %></span> </h4>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end col -->
+                                </div> <!-- end row-->
+
+                            </div> <!-- end .h-100-->
+
+                        </div> <!-- end col -->
+
+                    </div>
+
+                </div>
+                <!-- container-fluid -->
+
+                <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body text-center p-5">
+                                <form action="/admin/wallets" id="add-wallet-form">
+                                    <div class="form-group">
+                                        <label for="">Coin</label>
+                                        <input type="text" name="coin" id="coin" placeholder="enter crypto name" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Select Network</label>
+                                        <select class="form-control" name="network" id="network">
+                                            <option value="">Pick a network</option>
+                                            <option value="BEP20">BEP20</option>
+                                            <option value="ERC20">ERC20</option>
+                                            <option value="TRC20">TRC20</option>
+                                            <option value="BTC">Bitcoin</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Address</label>
+                                        <input type="text" name="address" id="address" placeholder="your deposit address"
+                                            class="form-control">
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <button class="btn btn-primary">submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+            </div>
+            <!-- End Page-content -->
+
+            <%- include('../partials/footer'); %>

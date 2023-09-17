@@ -342,3 +342,8 @@ String.prototype.ucwords = function () {
     }
     return words.join(' ');
 };
+
+function addProfitMod(id){
+    $("#tid").val(id);
+    $(".bs-example-modal-center").modal("show");
+}

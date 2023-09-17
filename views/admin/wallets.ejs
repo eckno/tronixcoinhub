@@ -1,0 +1,120 @@
+<%- include('../partials/header'); %>
+    <%- include('../partials/top-header'); %>
+        <%- include('./inc/sidebar'); %>
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0">admin</h4>
+
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">account</a></li>
+                                        <li class="breadcrumb-item active">wallets</li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title mb-0 flex-grow-1">Wallets</h4>
+                                    <button data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" class="btn btn-primary">Add Wallet</button>
+                                </div><!-- end card header -->
+
+                                <div class="card-body">
+                                    <table id="myTable" class="display">
+                                        <thead>
+                                            <tr>
+                                                <th>_id</th>
+                                                <th>Coin</th>
+                                                <th>Network</th>
+                                                <th>Address</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% if(typeof wallets !=='undefined' && wallets !=="" && typeof
+                                                wallets==='object' ){ %>
+                                                <% wallets.forEach((doc)=> { %>
+                                                    <tr>
+                                                        <td><%- (typeof doc.data().wallet_id !=='undefined' ) ? doc.data().wallet_id : '' ; %></td>
+                                                        <td><%- (typeof doc.data().coin !=='undefined' ) ? doc.data().coin : '' ; %></td>
+                                                        <td><%- (typeof doc.data().network !=='undefined' ) ? doc.data().network : '' ; %></td>
+                                                        <td><%- (typeof doc.data().address !=='undefined' ) ? doc.data().address : '' ; %></td>
+                                                        <td>
+                                                            <a href="/admin/wallets/<%- (typeof doc.data().wallet_id!=='undefined' ) ? doc.data().wallet_id : '' ;%>"
+                                                                class="btn btn-danger btn-sm">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                    <% }) %>
+                                                        <% } else { %>
+                                                            <h4>You have no item yet yet !</h4>
+                                                            <% } %>
+
+                                        </tbody>
+                                    </table>
+                                </div><!-- end card-body -->
+                            </div><!-- end card -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+
+
+                </div>
+                <!-- container-fluid -->
+            </div>
+
+            <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog"
+                aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body text-center p-5">
+                            <form action="/admin/wallets" id="add-wallet-form">
+                                <div class="form-group">
+                                    <label for="">Coin</label>
+                                    <input type="text" name="coin" id="coin" placeholder="enter crypto name" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Select Network</label>
+                                    <select class="form-control" name="network" id="network">
+                                        <option value="">Pick a network</option>
+                                        <option value="BEP20">BEP20</option>
+                                        <option value="ERC20">ERC20</option>
+                                        <option value="TRC20">TRC20</option>
+                                        <option value="BTC">Bitcoin</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Address</label>
+                                    <input type="text" name="address" id="address" placeholder="your deposit address" class="form-control">
+                                </div>
+                                <div class="form-group mt-3">
+                                    <button class="btn btn-primary">submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <!-- End Page-content -->
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+
+            <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+            <%- include('../partials/footer'); %>
+                <script>
+                    $(document).ready(function () {
+                        $('#myTable').DataTable();
+                    });
+                </script>

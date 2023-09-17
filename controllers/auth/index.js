@@ -6,7 +6,7 @@
 
 const _ = require('lodash');
 const BaseController = require('../base');
-const { ROUTE_HOME, ROUTE_CREATE_NEW_PASSWORD, ROUTE_LOGIN, ROUTE_DASHBOARD, ROUTE_2FA } = require("../../lib/page-routes");
+const { ROUTE_CREATE_NEW_PASSWORD, ROUTE_LOGIN, ROUTE_DASHBOARD, ROUTE_2FA } = require("../../lib/page-routes");
 const { generateRandomCodes, empty } = require("../../lib/utils");
 const EmailService = require("../emailController");
 class AuthController extends BaseController {
@@ -54,12 +54,13 @@ class AuthController extends BaseController {
 				return AuthController.sendFailResponse(res, response);
 			}
 
-			let using_2fa = "No", user_id, isid, auth, email = "";
+			let using_2fa = "No", tag, user_id, isid, auth, email = "";
 			findUser.forEach((user) => {
 				isid = user.id;
 				user_id = user.data().account_id;
 				email = user.data().email;
 				auth = user.data().password;
+				tag = user.data().tag;
 				using_2fa = (!empty(user.data().settings) && !empty(user.data().settings.using_2fa)) ? user.data().settings.using_2fa : "No";
 			});
 
@@ -76,7 +77,7 @@ class AuthController extends BaseController {
 					req.flash("success", "Kindly enter the four(4) digit 2fa code sent to your email.");
 					return AuthController.sendSuccessResponse(res, response);
 				}
-				req.session.user = {isid, user_id, email }
+				req.session.user = {isid, user_id, email, tag }
 
 				response['redirect_url'] = ROUTE_DASHBOARD;
 				req.flash("success", "Login successful");
@@ -147,6 +148,7 @@ class AuthController extends BaseController {
 				total_deposited: 0,
 				trading: 0,
 				profile_completion: 20,
+				tag: "member",
 				account_id: generateRandomCodes(1, 25, 25)[0],
 			}
 

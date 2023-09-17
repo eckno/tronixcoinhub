@@ -4,12 +4,14 @@ const app = require('./app');
 const index = require('./routes/index');
 const auth = require('./routes/auth');
 const dashboard = require('./routes/secure');
+const admin = require('./routes/admin');
 
 
 // Routes
 app.use('/', index);
 app.use('/', auth);
 app.use('/', dashboard);
+app.use('/', admin);
 
 
 const IndexController = require('./controllers/index');

@@ -114,6 +114,16 @@ $(document).ready(function() {
         display_spinner();
         do_form_submit('tronic-bonds-form');
     });
+    $("#add-profit-form").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('add-profit-form');
+    });
+     $("#add-wallet-form").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        do_form_submit('add-wallet-form');
+    });
     // $(".input_code").on("input", function() {
     //     var maxLength = parseInt($(this).attr("maxlength"));
     //     var inputValue = $(this).val();
