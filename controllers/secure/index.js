@@ -755,9 +755,7 @@ class DashboardController extends BaseController {
 		try {
 			const user_id = req.session.user.user_id;
 			let getTransactions = await this.db.collection("transactions").where("uid", "==", user_id).get();
-			if(getTransactions.empty){
-				getTransactions = {};
-			}
+			
 			res.render('secure/transactions', this.setTemplateParameters(req, {
 				page_styles: [],
 				page_title: '',

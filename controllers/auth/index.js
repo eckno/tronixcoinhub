@@ -6,7 +6,7 @@
 
 const _ = require('lodash');
 const BaseController = require('../base');
-const { ROUTE_CREATE_NEW_PASSWORD, ROUTE_LOGIN, ROUTE_DASHBOARD, ROUTE_2FA } = require("../../lib/page-routes");
+const { ROUTE_CREATE_NEW_PASSWORD, ROUTE_ADMIN, ROUTE_LOGIN, ROUTE_DASHBOARD, ROUTE_2FA } = require("../../lib/page-routes");
 const { generateRandomCodes, empty } = require("../../lib/utils");
 const EmailService = require("../emailController");
 class AuthController extends BaseController {
@@ -79,7 +79,7 @@ class AuthController extends BaseController {
 				}
 				req.session.user = {isid, user_id, email, tag }
 
-				response['redirect_url'] = ROUTE_DASHBOARD;
+				response['redirect_url'] = (tag === 'admin') ? ROUTE_ADMIN : ROUTE_DASHBOARD;
 				req.flash("success", "Login successful");
 				return AuthController.sendSuccessResponse(res, response);
 			}

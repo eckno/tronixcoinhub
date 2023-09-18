@@ -180,6 +180,81 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div>
+
+                <!-- Compose Modal -->
+                <div class="modal fade" id="composemodal" tabindex="-1" role="dialog" aria-labelledby="composemodalTitle"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header p-3 bg-light">
+                                <h5 class="modal-title" id="composemodalTitle">New Message</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <div class="mb-3 position-relative">
+                                        <input type="text" class="form-control email-compose-input" data-choices data-choices-limit="15"
+                                            value="support@themesbrand.com" data-choices-removeItem placeholder="To">
+                                        <div class="position-absolute top-0 end-0">
+                                            <div class="d-flex">
+                                                <button class="btn btn-link text-reset fw-semibold px-2" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#CcRecipientsCollapse"
+                                                    aria-expanded="false" aria-controls="CcRecipientsCollapse">
+                                                    Cc
+                                                </button>
+                                                <button class="btn btn-link text-reset fw-semibold px-2" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#BccRecipientsCollapse"
+                                                    aria-expanded="false" aria-controls="BccRecipientsCollapse">
+                                                    Bcc
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse" id="CcRecipientsCollapse">
+                                        <div class="mb-3">
+                                            <label>Cc:</label>
+                                            <input type="text" class="form-control" data-choices data-choices-limit="15"
+                                                data-choices-removeItem placeholder="Cc recipients">
+                                        </div>
+                                    </div>
+                                    <div class="collapse" id="BccRecipientsCollapse">
+                                        <div class="mb-3">
+                                            <label>Bcc:</label>
+                                            <input type="text" class="form-control" data-choices data-choices-limit="15"
+                                                data-choices-removeItem placeholder="Bcc recipients">
+                                        </div>
+                                    </div>
+                
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" placeholder="Subject">
+                                    </div>
+                                    <div class="ck-editor-reverse">
+                                        <div id="email-editor"></div>
+                                    </div>
+                
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-ghost-danger" data-bs-dismiss="modal">Discard</button>
+                
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success">Send</button>
+                                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i class="ri-timer-line text-muted me-1 align-bottom"></i>
+                                                Schedule Send</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end modal -->
+
+                
             </div>
             <!-- End Page-content -->
 
