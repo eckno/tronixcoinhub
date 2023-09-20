@@ -191,6 +191,21 @@ class AdminController extends BaseController {
 				if(updateDeposit){
 					const updateUser = await this.db.collection("users").doc(user_record_id).update(user_update);
 					if(updateUser){
+						const mail = {
+						user_data: {
+							firstname: user_record_data.username, 
+							amount: dep_data.data().amount, 
+							transaction_id: dep_data.data().depid,
+							email: user_record_data.email
+						}, 
+						file_path: "../views/emails/deposit.handlebars", 
+						subject: "Successful deposit to your account"
+					}
+					const emailService = new EmailService();
+					const send_email = await emailService.initEmail(mail);
+					if(send_email){
+						console.log('success');
+					}
 						req.flash("success", "Account deposit have been added successfuly");
 						return res.redirect(ROUTE_DEPOSITS);
 					}
@@ -395,7 +410,7 @@ class AdminController extends BaseController {
 				};
 				const user_update = {
 					withdrawal: 0,
-					total_withdrawn: user_record_data.total_withdrawn + get_data.data().amount
+					total_withdrawn: parseInt(user_record_data.total_withdrawn) + parseInt(get_data.data().amount)
 				};
 
 				const update_w = await this.db.collection('withdrawals').doc(wid).update(withdraw_update);

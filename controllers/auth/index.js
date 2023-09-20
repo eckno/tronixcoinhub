@@ -153,10 +153,11 @@ class AuthController extends BaseController {
 			}
 
 			const create_new_user = await this.db.collection("users").doc(new_user_data['email']).set(new_user_data);
-			console.log(create_new_user);
 			if(create_new_user && _.isObject(create_new_user)){
 				const mail = {
-					user_data: new_user_data, file_path: "../views/emails/welcome.handlebars", subject: "Welcome To Tronixcoin"
+					user_data: new_user_data, 
+					file_path: "../views/emails/welcome.handlebars", 
+					subject: "Welcome To Tronixcoin"
 				}
 				const emailService = new EmailService();
 				const send_email = await emailService.initEmail(mail);

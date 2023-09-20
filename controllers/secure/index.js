@@ -28,7 +28,7 @@ class DashboardController extends BaseController {
 				this.balance = infos.data().balance;
 			}
 		} catch (error) {
-		  console.error('Error during async operation:', error);
+		  console.log('Error during async operation:', error);
 		}
 	  }
 
@@ -420,11 +420,13 @@ class DashboardController extends BaseController {
 					deposit_wallet = doc.data().address;
 				})
 			}
+			const tax = parseInt(fetch_deposit_details.data().amount) / 100 * 10;
 			res.render('secure/deposit_summary', this.setTemplateParameters(req, {
 				page_styles: [],
 				page_title: '',
 				address: deposit_wallet,
-				deposit: fetch_deposit_details.data()
+				deposit: fetch_deposit_details.data(),
+				tax
 			}));
 		} catch (e) {
 			let error = 'An error occurred processing your request. Please check your request and try again';
@@ -474,13 +476,21 @@ class DashboardController extends BaseController {
 
 				if(create_deposit && _.isObject(create_deposit)){
 					const mail = {
-						user_data: {firstname:req.session.user.uname, amount: deposit_data.amount, transaction_id: deposit_data.depid}, file_path: "../views/emails/deposit.handlebars", subject: "Successful deposit to your account"
+						user_data: {
+							firstname:req.session.user.uname, 
+							amount: deposit_data.amount, 
+							transaction_id: deposit_data.depid,
+							email: isid
+						}, 
+						file_path: "../views/emails/placed_deposit.handlebars", 
+						subject: "New deposit request."
 					}
 					const emailService = new EmailService();
 					const send_email = await emailService.initEmail(mail);
 					if(send_email){
 						console.log('success');
 					}
+					
 					this.db.collection("users").doc(isid).update({deposit: deposit_data.amount});
 					this.db.collection('transactions').doc().set(deposit_data);
 					req.flash("success", "Your deposit has been successfully created. <br><br>Kindly copy your generated wallet address and complete your transfer to fund your account.");
@@ -562,6 +572,12 @@ class DashboardController extends BaseController {
 					status: "processing"
 				}
 
+				const getbalance = await this.db.collection("users").doc(isid).get();
+				if(!getbalance.exists){
+					//
+				}
+				const new_balance = parseInt(getbalance.data().balance) - parseInt(post['amount']);
+
 				const submit_withdrawal = await this.db.collection("withdrawals").doc(_data.wid).set(_data);
 
 				if(submit_withdrawal && _.isObject(submit_withdrawal)){
@@ -573,7 +589,7 @@ class DashboardController extends BaseController {
 					if(send_email){
 						console.log('success');
 					}
-					this.db.collection("users").doc(isid).update({withdrawal: _data.amount});
+					this.db.collection("users").doc(isid).update({withdrawal: _data.amount, balance: new_balance});
 					this.db.collection('transactions').doc().set(_data);
 					req.flash("success", "Your withdrawal request has been submitted successfully and will be attended to in few minutes.");
 					response['redirect_url'] = `${ROUTE_WITHDRAWAL_SUMMARY}/${_data.wid}`;
@@ -614,11 +630,12 @@ class DashboardController extends BaseController {
 			if(!fetch_wid_details.exists){
 				return res.redirect(ROUTE_DASHBOARD);
 			}
-			
+			const tax = parseInt(fetch_wid_details.data().amount) / 100 * 10;
 			res.render('secure/withdrawal_summary', this.setTemplateParameters(req, {
 				page_styles: [],
 				page_title: '',
-				withd: fetch_wid_details.data()
+				withd: fetch_wid_details.data(),
+				tax
 			}));
 		} catch (e) {
 			let error = 'An error occurred processing your request. Please check your request and try again';

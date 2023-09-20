@@ -69,14 +69,15 @@
                                     </tr>
                                     
                                     <tr>
-                                        <td colspan="2">Estimated Tax (0%): </td>
-                                        <td class="text-end">$ 00.00</td>
+                                        <td colspan="2">Estimated Tax (10%): </td>
+                                        <td class="text-end">$ <%- tax; %>.00</td>
                                     </tr>
                                     <tr class="table-active">
                                         <th colspan="2">Total (USD) :</th>
                                         <td class="text-end">
                                             <span class="fw-semibold">
-                                                $<%= deposit.amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'}); %>
+                                                <% var amount = parseInt(deposit.amount) + parseInt(tax); %>
+                                                <%= amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'}); %>
                                             </span>
                                         </td>
                                     </tr>
